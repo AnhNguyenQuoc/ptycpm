@@ -1,0 +1,15 @@
+<%= form_for(:session, url: login_path) do |f| %>
+  <%= f.label :email %>
+  <%= f.email_field :email %>
+
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+
+  <%= f.label :remember_me %>
+  <%= f.check_box :remember_me %>
+  <span>Remember me on this computer</span>
+  <%= f.submit "Login" %>
+
+<% end %>
+
+<p>New users? <%= link_to "Sign up now!", signup_path %></p>
