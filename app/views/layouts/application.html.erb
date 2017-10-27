@@ -15,6 +15,7 @@
     <% end %>
     <% if logged_in? %>
       <%= button_to "Logout", logout_path, method: :delete %>
+      <%= link_to "Edit", edit_user_path(current_user) %>
     <% else %>
       <%= button_to "Login", login_path, method: :get %>
     <% end %>

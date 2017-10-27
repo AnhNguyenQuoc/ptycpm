@@ -10,6 +10,7 @@ class User < ApplicationRecord
   VALID_PHONE_VN_REGEX = /\A(01[2689]|09)[0-9]{8}\z/i
   validates :phone, presence: true
   validates :address, presence: true, length: {maximum: 50}
+  validates :password, presence: true, length: {minimum: 6}, allow_nil: true
   has_secure_password
 
 
