@@ -10,7 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171024150947) do
+ActiveRecord::Schema.define(version: 20171027090845) do
+
+  create_table "products", force: :cascade do |t|
+    t.string "name"
+    t.decimal "price", precision: 8, scale: 2, default: "0.0"
+    t.integer "discount", default: 0
+    t.text "description"
+    t.integer "view"
+    t.integer "total"
+    t.integer "catalog", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "image_file_name"
+    t.string "image_content_type"
+    t.integer "image_file_size"
+    t.datetime "image_updated_at"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
