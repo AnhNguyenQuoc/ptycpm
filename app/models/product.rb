@@ -14,8 +14,7 @@ validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 validates :name, presence: true, length: {minimum: 4}
 validates :price, presence: true, numericality: {only_integer: true, greater_than_or_equal_to: 0}
 validates :discount, presence: true, numericality: {only_integer: true, greater_than_or_equal_to: 0}
-validates :discription, presence: true, length: {maximum: 50}
+validates :description, presence: true, length: {maximum: 50}
 validates :total, presence: true, numericality: {only_integer: true, greater_than_or_equal_to: 0}
 validates :catalog, presence: true
-validates :image, attachment_presence: true
 end
