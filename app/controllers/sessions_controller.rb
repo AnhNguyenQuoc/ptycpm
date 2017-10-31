@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  skip_authorization_check
+  before_action :check_login, only: [:new, :create]
   def new
   end
 
@@ -17,5 +19,12 @@ class SessionsController < ApplicationController
   def destroy
     log_out if logged_in?
     redirect_to root_path
+  end
+
+  private
+  def check_login
+    unless !logged_in?
+      redirect_to root_path
+    end
   end
 end

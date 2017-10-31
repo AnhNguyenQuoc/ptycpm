@@ -1,11 +1,24 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Ptycpm</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!-- Rails -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <!-- FONT -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Oswald" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Russo+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Exo" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lobster|Lobster+Two" rel="stylesheet">
+    <title>VEGETABLEs</title>
   </head>
 
   <body>
@@ -13,12 +26,99 @@
 
       <div class="alert alert-<%=message_type %>"><%= message %></div>
     <% end %>
-    <% if logged_in? %>
-      <%= button_to "Logout", logout_path, method: :delete %>
-      <%= link_to "Edit", edit_user_path(current_user) %>
-    <% else %>
-      <%= button_to "Login", login_path, method: :get %>
-    <% end %>
+    <div class="mid">
+      <div class="top">
+
+            <div class="search">
+                <input type="text" name="" value="" placeholder="Search">
+                <button type="button" name="btnsearch" style="background:transparent;">	&#128269;</button>
+            </div>
+      </div>
+      <div class="container">
+          <div class="header">
+              <div class="logo">
+                  <img src="img/logo.png" alt="logo" style="width:150px">
+              </div>
+              <div class="menu">
+                  <ul>
+                      <li><%= link_to "Home", root_path %></li>
+                      <li><%= link_to "features" %></li>
+                      <li><%= link_to "portfolio" %></li>
+                      <li><%= link_to "blog" %></li>
+                      <li><%= link_to "shop" %></li>
+                      <li><%= link_to "withus?" %></li>
+                  </ul>
+              </div>
+          </div>
     <%= yield %>
+    <footer>
+      <div class="footer-sumary">
+        <div class="about">
+            <div class="name-about">
+                <p>OUR TEAM</p>
+
+            </div>
+            <div class="name-about">
+                <p>RECENT COMMENT</p>
+
+            </div>
+            <div class="name-about">
+                <p>CUSTOM MENU</p>
+
+            </div>
+            <div class="name-about">
+                <p>RECENT POSES</p>
+
+            </div>
+            <div class="detail-about">
+              <iframe width="100%" height="100%" src="https://www.youtube.com/embed/DOT15xaX7-E?start=12" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="detail-about">
+              <ul>
+                 <li><i class="fa fa-check" aria-hidden="true"></i><a href="#"> 1</a></li>
+                 <li><i class="fa fa-check" aria-hidden="true"></i><a href="#"> 2</a></li>
+                 <li><i class="fa fa-check" aria-hidden="true"></i><a href="#"> 3</a></li>
+                 <li><i class="fa fa-check" aria-hidden="true"></i><a href="#"> 4</a></li>
+                 <li><i class="fa fa-check" aria-hidden="true"></i><a href="#"> 5</a></li>
+
+              </ul>
+            </div>
+            <div class="detail-about">
+              <ul>
+                <li><i class="fa fa-check" aria-hidden="true"></i><a href="#"> 1</a></li>
+                <li><i class="fa fa-check" aria-hidden="true"></i><a href="#"> 2</a></li>
+                <li><i class="fa fa-check" aria-hidden="true"></i><a href="#"> 3</a></li>
+                <li><i class="fa fa-check" aria-hidden="true"></i><a href="#"> 4</a></li>
+                <li><i class="fa fa-check" aria-hidden="true"></i><a href="#"> 5</a></li>
+
+              </ul>
+            </div>
+            <div class="detail-about">
+              <ul>
+                <li><i class="fa fa-check" aria-hidden="true"></i><a href="#"> 1</a></li>
+                <li><i class="fa fa-check" aria-hidden="true"></i><a href="#"> 2</a></li>
+                <li><i class="fa fa-check" aria-hidden="true"></i><a href="#"> 3</a></li>
+                <li><i class="fa fa-check" aria-hidden="true"></i><a href="#"> 4</a></li>
+                <li><i class="fa fa-check" aria-hidden="true"></i><a href="#"> 5</a></li>
+
+              </ul>
+            </div>
+
+      </div> <!-- about -->
+      <div class="footer">
+        <div class="copyright">
+          <p>copyright	&#169; by americanTEAM</p>
+        </div>
+        <div class="icon-contact">
+                <a href="#"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
+                <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+
+        </div>
+        </div>
+    </div>
+</div> <!-- container -->
+
+</div>
+    </footer>
   </body>
 </html>
