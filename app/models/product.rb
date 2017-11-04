@@ -17,4 +17,5 @@ validates :discount, presence: true, numericality: {only_integer: true, greater_
 validates :description, presence: true, length: {maximum: 50}
 validates :total, presence: true, numericality: {only_integer: true, greater_than_or_equal_to: 0}
 validates :catalog, presence: true
+validates :source, presence: true
 end

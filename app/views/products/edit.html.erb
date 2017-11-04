@@ -34,5 +34,10 @@
     <%= f.label :catalog %>
     <%= f.select :catalog, Product.catalogs.keys, prompt: "Select catalog for product" %>
     
+
+    <%= f.label :source %>
+    <%= f.country_select :source %>
+
+
     <%= f.submit "Update product" %>
 <% end %>
