@@ -5,7 +5,7 @@ class Ability
     user ||= User.new # guest user (not logged in)
     if user.role == "admin"
       can :manage, :all # if user is admin, can access any action in all controller
-    else
+    elsif user.role == "customer"
       can :index, :all
     end
 

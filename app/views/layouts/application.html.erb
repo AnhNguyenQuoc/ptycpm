@@ -41,13 +41,21 @@
               </div>
               <div class="menu">
                   <ul>
-                      <li><%= link_to "Home", root_path %></li>
-                      <li><%= link_to "features" %></li>
-                      <li><%= link_to "portfolio" %></li>
-                      <li><%= link_to "blog" %></li>
-                      <li><%= link_to "shop" %></li>
-                      <li><%= link_to "withus?" %></li>
+                    <li><%= link_to "Home", root_path %></li>
+                    <li><a href="#">blog</a></li>
+                    <li><a href="#">shop</a></li>
+                    <% if !logged_in? %>
+                    <li><%= link_to "sign in", login_path %> </li>
+                    <li><%= link_to "sign up", signup_path %></li>
+                     
+                    <% else %>     
+                    <li><%= link_to current_user.name, user_path(current_user) %></li>
+                    <li><%= link_to "log out", logout_path(current_user), method: :delete %> </li>
+                    <% if can? :index, @product %>
+                    <li><%= link_to "Product", products_path %></li>
+                  <% end %>
                   </ul>
+                    <% end %>
               </div>
           </div>
     <%= yield %>

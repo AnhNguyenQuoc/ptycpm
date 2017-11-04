@@ -1,15 +1,25 @@
-<%= form_for(:session, url: login_path) do |f| %>
-  <%= f.label :email %>
-  <%= f.email_field :email %>
-
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-
-  <%= f.label :remember_me %>
-  <%= f.check_box :remember_me %>
-  <span>Remember me on this computer</span>
-  <%= f.submit "Login" %>
-
-<% end %>
-
-<p>New users? <%= link_to "Sign up now!", signup_path %></p>
+<div id="sign_in">
+    <div class="header_signin">
+        <p>SIGN IN
+            <i class="fa fa-sign-in" aria-hidden="true"></i>
+        </p>
+    </div>
+    <div class="info_signin">
+        <%= form_for(:session, url: login_path) do |f| %>
+            <p>
+                <i class="fa fa-user-circle-o"></i>
+                <%= f.label :email %>
+            </p>
+            <%= f.email_field :email %>
+                <p>
+                    <i class="fa fa-lock"></i>
+                    <%= f.label :password %>
+                </p>
+                <%= f.password_field :password %>
+                    <p>
+                        <%= f.submit "Login", {:style => 'background:tomato;margin:15px 0;border:none;color:white;background:tomato;padding:10px 20px;'} %>
+                    </p>
+        <% end %>
+        <%= link_to "no accounts yet?", login_path, {:style => 'color:#80bfff;font-style:italic;font-size:80%;'} %>
+    </div>
+</div>

@@ -1,26 +1,37 @@
-
-<%= form_for @user do |f| %>
-
+<div id="sign_in">
+  <div class="header_signup">
+      <p>SIGN UP <i class="fa fa-user-plus" aria-hidden="true"></i></p>
+  </div>
+  <%= form_for @user do |f| %>
   <%= render 'shared/error_messages' %>
+  <div class="info_signin">
+      <p><i class="fa fa-user-circle-o" aria-hidden="true"></i> <%= f.label :name %></p>
+      <%= f.text_field :name, placeholder: "Name of you" %>
+      <p><i class="fa fa-envelope" aria-hidden="true"></i> <%= f.label :email %></p>
+      <%= f.text_field :email, placeholder: "Email of you" %>
+      <p><i class="fa fa-lock" aria-hidden="true"></i><%= f.label :password %></p>
+      <%= f.password_field :password %>
+       <p><i class="fa fa-lock" aria-hidden="true"></i><%= f.label :password_confirmation, "Confirmation" %></p>
+       <%= f.password_field :password_confirmation %>
+       <p><i class="fa fa-phone-square" aria-hidden="true"></i><%= f.label :phone %></p>
+       <%= f.text_field :phone, placeholder: "Phone of you" %>
 
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+       <p><i class="fa fa-map-marker" aria-hidden="true"></i><%= f.label :address %></p>
+       <%= f.text_field :address, placeholder: "Address of you" %>
+      <%= f.submit "Create my account", {:style => 'background:tomato;margin-top:15px;border:none;color:white;background:tomato;padding:10px 20px;'} %>
+      <% end %>
+  </div>
+</div>
 
-  <%= f.label :email %>
-  <%= f.email_field :email %>
 
-  <%= f.label :password %>
-  <%= f.password_field :password %>
+  
 
-  <%= f.label :password_confirmation, "Confirmation" %>
-  <%= f.password_field :password_confirmation %>
+  
+  
 
-  <%= f.label :phone %>
-  <%= f.phone_field :phone %>
+  
+  
 
-  <%= f.label :address %>
-  <%= f.text_field :address %>
 
-  <%= f.submit "Create my account" %>
 
-<% end %>
+
