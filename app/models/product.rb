@@ -1,4 +1,9 @@
 class Product < ApplicationRecord
+
+has_many :line_items
+
+before_destroy :ensure_not_referenced_by_any_line_item
+
     enum catalog: {
         "Leafy and salad vegetables" => 1,
         "Fruits" => 2,
@@ -17,4 +22,12 @@ validates :discount, presence: true, numericality: {only_integer: true, greater_
 validates :description, presence: true, length: {maximum: 50}
 validates :total, presence: true, numericality: {only_integer: true, greater_than_or_equal_to: 0}
 validates :catalog, presence: true
+
+private
+    def ensure_not_referenced_by_any_line_item
+        unless line_items.empty?
+            errors.add(:base, 'Line items present')
+            throw :abort
+        end
+    end
 end

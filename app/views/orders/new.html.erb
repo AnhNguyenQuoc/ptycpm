@@ -1,0 +1,26 @@
+<%= form_for(@order) do |f| %>
+<p>
+  <%= f.label :name %><br>
+  <%= f.text_field :name, required: true, autofocus: true %>
+</p>
+<p>
+  <%= f.label :email %><br>
+  <%= f.email_field :email %>
+</p>
+<p>
+  <%= f.label :address %><br>
+  <%= f.text_area :address %>
+</p>
+<p>
+    <%= f.label :phone %>
+    <%= f.text_field :phone %>
+</p>
+<p>
+    <%= f.label :pay_type %>
+    <%= f.select :pay_type, Order.pay_types.keys, prompt: "select a payment method" %>
+</p>
+
+<p>
+  <%= f.submit %>
+</p>
+<% end %>
