@@ -2,12 +2,12 @@ Rails.application.routes.draw do
 
 
 
+  ActiveAdmin.routes(self)
   root 'layouts#index'
   get '/signup', to: 'users#new'
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
-
   get 'carts/:id' => "carts#show", as: "cart"
   delete 'carts/:id' => "carts#destroy"
   

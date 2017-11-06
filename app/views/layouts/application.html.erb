@@ -55,6 +55,10 @@
                     <% end %>
               </div>
           </div>
+          <% flash.each do |message_type, message| %>
+          
+                <div class="alert alert-<%=message_type %>"><%= message %></div>
+            <% end %>
     <%= yield %>
     <footer>
       <div class="footer-sumary">
@@ -110,10 +114,7 @@
             </div>
 
       </div> 
-      <% flash.each do |message_type, message| %>
       
-            <div class="alert alert-<%=message_type %>"><%= message %></div>
-        <% end %>
       <div class="footer">
         <div class="copyright">
           <p>copyright	&#169; by americanTEAM</p>

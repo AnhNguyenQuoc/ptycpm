@@ -32,6 +32,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 gem 'cancancan', '~> 2.0'
 # Use Capistrano for deployment
+gem 'activeadmin'
 # gem 'capistrano-rails', group: :development
 gem 'country_select'
 group :development, :test do

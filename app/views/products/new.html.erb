@@ -35,7 +35,7 @@
     <%= f.select :catalog, Product.catalogs.keys, prompt: "Select catalog for product" %>
     
     <%= f.label :source %>
-    <%= f.country_select :source, {include_blank: 'Select a country'} %>
+    <%= f.country_select :source, include_blank: false, only: ["VN", "US", "GB", "FR", "TH", "JP"] %>
 
     <%= f.submit "Create Product" %>
 <% end %>

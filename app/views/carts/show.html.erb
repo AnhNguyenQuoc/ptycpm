@@ -20,11 +20,7 @@
   <% end %>
 </ul>
 <h3>total: <%= number_to_currency(@cart.total_price) %></h3>
-<<<<<<< HEAD
-
-=======
 <% if @cart.line_items.count > 0 %>
->>>>>>> add-cart
 <%= link_to "Proceed to checkout", new_order_path %><br>
 
 <%= link_to "Empty cart", cart_path(@current_cart),method: :delete, data: {confirm: "Are you sure?"} %>
