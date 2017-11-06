@@ -1,7 +1,8 @@
-<%= form_for(@order) do |f| %>
-<p>
-  <%= f.label :name %><br>
-  <%= f.text_field :name, required: true, autofocus: true %>
+<% if !logged_in? %>
+  <%= form_for(@order) do |f| %>
+  <p>
+   <%= f.label :name %><br>
+   <%= f.text_field :name, required: true, autofocus: true %>
 </p>
 <p>
   <%= f.label :email %><br>
@@ -23,4 +24,33 @@
 <p>
   <%= f.submit %>
 </p>
+<% end %>
+<% else %>
+<%= form_for(@order) do |f| %>
+<%= f.hidden_field :user_id,value: current_user.id %>
+<p>
+ <%= f.label :name %><br>
+ <%= f.text_field :name, value: current_user.name %>
+</p>
+<p>
+<%= f.label :email %><br>
+<%= f.email_field :email, value: current_user.email %>
+</p>
+<p>
+<%= f.label :address %><br>
+<%= f.text_area :address,value: current_user.address %>
+</p>
+<p>
+  <%= f.label :phone %>
+  <%= f.text_field :phone, value: current_user.phone %>
+</p>
+<p>
+  <%= f.label :pay_type %>
+  <%= f.select :pay_type, Order.pay_types.keys, prompt: "select a payment method" %>
+</p>
+
+<p>
+<%= f.submit %>
+</p>
+<% end %>
 <% end %>

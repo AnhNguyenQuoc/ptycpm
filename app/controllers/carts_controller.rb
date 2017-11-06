@@ -16,7 +16,7 @@ class CartsController < ApplicationController
 
   # GET /carts/new
   def new
-    @cart = Cart.new
+    @cart = Cart.create
   end
 
   # GET /carts/1/edit
@@ -26,7 +26,7 @@ class CartsController < ApplicationController
   # POST /carts
   # POST /carts.json
   def create
-    @cart = Cart.new(cart_params)
+    @cart = Cart.create(cart_params)
 
     respond_to do |format|
       if @cart.save

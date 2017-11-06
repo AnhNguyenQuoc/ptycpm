@@ -1,7 +1,6 @@
 class Product < ApplicationRecord
 
 has_many :line_items
-
 before_destroy :ensure_not_referenced_by_any_line_item
 
     enum catalog: {
@@ -23,6 +22,12 @@ validates :description, presence: true, length: {maximum: 50}
 validates :total, presence: true, numericality: {only_integer: true, greater_than_or_equal_to: 0}
 validates :catalog, presence: true
 validates :source, presence: true
+
+def count_view
+    sum = view + 1
+    self.update_attribute(:view, sum)
+    return sum
+end
 
 private
     def ensure_not_referenced_by_any_line_item

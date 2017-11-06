@@ -22,10 +22,7 @@
   </head>
 
   <body>
-    <% flash.each do |message_type, message| %>
-
-      <div class="alert alert-<%=message_type %>"><%= message %></div>
-    <% end %>
+    
     <div class="mid">
       <div class="top">
 
@@ -112,7 +109,11 @@
               </ul>
             </div>
 
-      </div> <!-- about -->
+      </div> 
+      <% flash.each do |message_type, message| %>
+      
+            <div class="alert alert-<%=message_type %>"><%= message %></div>
+        <% end %>
       <div class="footer">
         <div class="copyright">
           <p>copyright	&#169; by americanTEAM</p>
