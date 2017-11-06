@@ -28,8 +28,8 @@ class LineItemsController < ApplicationController
     chosen_product = Product.find(params[:product_id])
     current_cart = @current_cart
 
-    if LineItem.exists?(:cart_id => current_cart.id, :product_id => chosen_product)
-      @line_item = current_cart.line_items.find_by(product_id: chosen_product)
+    if LineItem.exists?(:cart_id => @current_cart.id, :product_id => chosen_product)
+      @line_item = @current_cart.line_items.find_by(product_id: chosen_product)
       @line_item.quantity += 1
     else  
       @line_item = LineItem.new
@@ -38,7 +38,7 @@ class LineItemsController < ApplicationController
     end
 
     @line_item.save
-    redirect_to cart_path(current_cart)
+    redirect_to cart_path(@current_cart)
     
   end
 

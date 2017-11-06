@@ -1,12 +1,8 @@
 class Cart < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, optional: true
   has_many :line_items, dependent: :destroy
 
-  def sub_total
-    sum = 0
-    self.line_items.each do |item|
-      sum += item.total_price
-    end
-    return sum
+  def total_price
+    line_items.to_a.sum {|item| item.total_price}
   end
 end

@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
     unless @current_cart
       if current_user
         cart = current_user.cart || Cart.create(:user => current_user)
-        @current_cart = cart
+        @current_cart = cart       
       elsif session[:cart_id]
         @current_cart = Cart.where(:id => session[:cart_id]).first || Cart.create
       else
