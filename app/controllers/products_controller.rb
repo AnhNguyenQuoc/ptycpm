@@ -9,6 +9,11 @@ class ProductsController < ApplicationController
     @products = Product.all
   end
 
+  def show  
+    @product = Product.find(params[:id])
+    @product.count_view
+  end
+
   def new
     @product = Product.new
   end
