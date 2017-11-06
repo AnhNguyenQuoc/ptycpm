@@ -1,9 +1,10 @@
 class ProductsController < ApplicationController
-  load_and_authorize_resource
-  rescue_from CanCan::AccessDenied do |exception|
-    redirect_to root_path, :alert => "You don't have permission"
-  end
-
+  #load_and_authorize_resource
+  #rescue_from CanCan::AccessDenied do |exception|
+   # redirect_to root_path, :alert => "You don't have permission"
+  #end
+  skip_authorization_check
+  
   def index
     @products = Product.all
   end
