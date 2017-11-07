@@ -2,17 +2,21 @@ ActiveAdmin.register Product do
     permit_params :name, :price, :discount, :description, :view, :total, :catalog, :source, :image
     filter :name
     filter :price, as: :numeric
-    filter :catalog, as: :select
+    filter :catalog, as: :select, collection: {"Leafy and salad vegetables" => 1,
+    "Fruits" => 2,
+    "Flowers and flower buds" => 3,
+    "Podded vegetables" => 4,
+    "Bulb and stem vegetables" => 5,
+    "Root and tuberous vegetables" => 6,
+    "Sea vagetables" => 7}
+
+    filter :source, as: :select
     scope :all, default: true
     scope :out_of_stock
+    config.per_page = 20
 
-    ActiveAdmin.setup do |config|
-        config.default_per_page = 30
-      end
-      
     index do
         column :name
-       
         column :price do |product|
             number_to_currency product.price
         end

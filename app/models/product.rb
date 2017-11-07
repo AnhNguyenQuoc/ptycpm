@@ -14,7 +14,7 @@ scope :out_of_stock, -> { where(total: 0)}
         "Podded vegetables" => 4,
         "Bulb and stem vegetables" => 5,
         "Root and tuberous vegetables" => 6,
-        "Sea vagetables0" => 7
+        "Sea vagetables" => 7
     }
 VALID_INTEGER = /\A[0-9]+\z/i
 has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
