@@ -1,7 +1,15 @@
 ActiveAdmin.register Product do
-
     permit_params :name, :price, :discount, :description, :view, :total, :catalog, :source, :image
     filter :name
+    filter :price, as: :numeric
+    filter :catalog, as: :select
+    scope :all, default: true
+    scope :out_of_stock
+
+    ActiveAdmin.setup do |config|
+        config.default_per_page = 30
+      end
+      
     index do
         column :name
        

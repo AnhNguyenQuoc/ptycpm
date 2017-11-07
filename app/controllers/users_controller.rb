@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
   before_action :check_user, only: [:edit, :update]
+  before_action :correct_user, only: [:edit, :update]
   skip_authorization_check
   
   def show
@@ -45,6 +46,11 @@ class UsersController < ApplicationController
       flash[:danger] = "Please log in"
       redirect_to login_path
     end
+  end
+
+  def correct_user
+    @user = User.find(parmas[:id])
+    redirect_to(root_url) unless @user == current_user
   end
 
   def user_params

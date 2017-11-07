@@ -26,37 +26,29 @@
     <div class="mid">
       <div class="top">
 
-            <div class="search">
-                <input type="text" name="" value="" placeholder="Search">
-                <button type="button" name="btnsearch" style="background:transparent;">	&#128269;</button>
-            </div>
       </div>
       <div class="container">
           <div class="header">
               <div class="logo">
-                  <img src="img/logo.png" alt="logo" style="width:150px">
+                <%= link_to "CHANRAU.NET", root_path %>
               </div>
               <div class="menu">
                   <ul>
-                    <li><%= link_to "Home", root_path %></li>
-                    <li><a href="#">blog</a></li>
-                    <li><a href="#">shop</a></li>
-                    <% if !logged_in? %>
-                    <li><%= link_to "sign in", login_path %> </li>
-                    <li><%= link_to "sign up", signup_path %></li>
-                     
-                    <% else %>     
-                    <li><%= link_to current_user.name, user_path(current_user) %></li>
-                    <li><%= link_to "log out", logout_path(current_user), method: :delete %> </li>
-                    <% if can? :index, @product %>
-                    <li><%= link_to "Product", products_path %></li>
-                  <% end %>
+                      <li><%= link_to "Home", root_path %></li>
+                      <li><a href="blog.php">blog</a></li>
+                      <li  id="li_hover"><a href="shop.php">shop</a></li>
+                      <% if !logged_in? %>
+                      <li><%= link_to "sign in", login_path %></li>
+                      <li><%= link_to "sign up", signup_path %></li>
+                      <% else %>
+                      <li><%= link_to current_user.name, current_user %></li>
+                      <li><%= link_to "logout", logout_path, method: :delete %></li>
+                      <% end %>
                   </ul>
-                    <% end %>
               </div>
           </div>
+
           <% flash.each do |message_type, message| %>
-          
                 <div class="alert alert-<%=message_type %>"><%= message %></div>
             <% end %>
     <%= yield %>

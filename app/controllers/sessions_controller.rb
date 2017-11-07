@@ -12,7 +12,10 @@ class SessionsController < ApplicationController
       if user.role == 'admin'
         redirect_to admin_dashboard_path
       elsif user.role == "customer"
-      redirect_to root_path
+        flash[:success] = "Welcome to ChanRau"
+        current_cart.user = current_user
+        current_cart.save
+        redirect_to root_path
       end
     else
       flash.now[:danger] = "Invalid email/password combination"
@@ -22,6 +25,7 @@ class SessionsController < ApplicationController
 
   def destroy
     log_out if logged_in?
+    flash[:success] = "Logout success"
     redirect_to root_path
   end
 
