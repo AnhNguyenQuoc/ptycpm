@@ -14,8 +14,9 @@ ActiveAdmin.register Product do
     scope :all, default: true
     scope :out_of_stock
     config.per_page = 20
-
+    
     index do
+        selectable_column
         column :name
         column :price do |product|
             number_to_currency product.price

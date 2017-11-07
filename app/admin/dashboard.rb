@@ -15,7 +15,7 @@ ActiveAdmin.register_page "Dashboard" do
       end
       column max_width: "400px", min_width: "200px" do
         panel "New products" do
-          table_for Product.order('id desc').limit(10) do
+          table_for Product.order('id desc').limit(5) do
             column("Name")  {|product| link_to(product.name, admin_product_path(product))}
             column("Price") {|product| number_to_currency(product.price)}
             column("Total") {|product| product.total}
