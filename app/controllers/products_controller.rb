@@ -6,7 +6,7 @@ class ProductsController < ApplicationController
   skip_authorization_check
   
   def index
-    @products = Product.all
+    @products = Product.all.paginate(:page => params[:page], :per_page => 9)
   end
 
   def show  

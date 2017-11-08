@@ -33,6 +33,9 @@ def count_view
     return sum
 end
 
+def price_discout
+    price - ((price * discount)/100)
+end
 private
     def ensure_not_referenced_by_any_line_item
         unless line_items.empty?

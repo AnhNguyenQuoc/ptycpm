@@ -1,11 +1,69 @@
+<div class="content2">
+        <div id="header-name">
+            <p>LET's  SHOPPING  <i class="fa fa-chevron-circle-right" aria-hidden="true"></i></p>
+        </div>
+        <div id="categories">
+            <div class="cate">
+                <p>CATEGORIES</p>
+            </div>
+            <ul id="choose">
+                <li><a href="">Leafy and salad vegetables</a></li>
+                <li><a href="">Fruits</a></li>
+                <li><a href="">Flowers and flower buds</a></li>
+                <li><a href="">	Podded vegetables</a></li>
+                <li><a href="">	Bulb and stem vegetables</a></li>
+      <li><a href="">Root and tuberous vegetables</a></li>
+                <li><a href="">	Sea vegetables</a></li>
 
-    <% @products.each do |product| %>
-        <p>Name: <%= product.name %>, <%= number_to_currency(product.price) %></p>
-        <p><%= image_tag product.image.url(:medium) %></p>
-        <p><%= button_to "Show", product_path(product), method: :get %></p>
-         <p><%= button_to "Edit", edit_product_path(product), method: :get %></p>
-         <%= link_to "delete", product, method: :delete,
-         data: { confirm: "You sure?" } %>
-         <p><%= button_to "Add to cart", line_items_path(product_id: product.id) %></p>
-    <% end %>
-<%= button_to "Add product", new_product_path, method: :get %>
+            </ul>
+        </div>
+        <div id="bestseller">
+            <div class="cate">
+                <p>BESTSELLER</p>
+            </div>
+            <ul id="choose">
+                <li><a href="">1</a></li>
+                <li><a href="">2</a></li>
+                <li><a href="">3</a></li>
+                <li><a href="">4</a></li>
+                <li><a href="">5</a></li>
+
+            </ul>
+        </div>
+        <div id="featured">
+			<div id="featured-product">
+				<p>FEATURED PRODUCTS </p>
+			</div>
+			<div class="view-product">
+                <% @products.each do |product| %>
+				    <div class="vegets">
+                        <%= render partial: "product", locals: {product: product} %>
+                    </div>
+                <% end %>
+			</div>
+		</div>
+        <div id="number">
+
+            <div class="pages empty" >
+      <div class="empty">
+      </div>
+      <span style="text-align: right;">
+          <%= will_paginate @products %>
+      <div class="empty">
+      </div>
+            </div>
+
+    <div class="ship">
+        <div class="check">
+         <%= image_tag("shipfree.png", :style => "width:180px;padding:2px 0 1px;")%><p>Everywhere</p>
+        </div>
+        <div class="check">
+          <%= image_tag('fresh2.png', style: "height:100px;width:80px;") %><p>Everything</p>
+
+        </div>
+
+
+    </div>
+        </div>
+
+</div>

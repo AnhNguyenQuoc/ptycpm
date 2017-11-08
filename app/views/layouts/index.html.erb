@@ -29,53 +29,25 @@
         <p style="font-weight:600;font-size:85%;">WHEN QUALITY MATTERS TO YOU AND YOUR CUSTOMERS</p>
     </div>
     <div class="product">
-     
+     <% @products.each do |product| %>
         <div class="detail-product">
-           <div id="dit_me_2"><p><i class="fa fa-plus" aria-hidden="true"></i></p></div>
-           <div id="dit_me"><a href="cart.php"><p>ADD <i class="fa fa-plus" aria-hidden="true"></i></p></a></div>
-            <div id="img_pro_detail">
-              <img src="img/product1.jpg" alt="salad leaf">
+           <div class="dit_me_2"><p style="color:white;"><i class="fa fa-plus" aria-hidden="true"></i></p></div>
+           <% if product.discount !=0 %>
+           <div class="discout"><p style="color:white;background:tomato;margin-left:120px;margin-top:-7px; border-radius:50% 50%;"><%= product.discount %></p></div>
+           <% end %>
+           <div class="dit_me">
+              <%= link_to "<p style='color:white;'>ADD <i class='fa fa-plus' aria-hidden='true'></i></p>".html_safe, line_items_path(product_id: product.id), method: :post %>
             </div>
-            <div id="p_pro_detail1"><p>Salad</p></div>
-            <div id="cost"><p >$$$</p></div>
-        </div>
-    
-        <div class="detail-product">
-          <div id="dit_me_2"><p><i class="fa fa-plus" aria-hidden="true"></i></p></div>
-           <div id="dit_me"><a href="cart.php"><p>ADD <i class="fa fa-plus" aria-hidden="true"></i></p></a></div>
-             <div id="img_pro_detail">
-              <img src="img/product2.jpg" alt="salad leaf">
+            <div class="img_pro_detail">
+              <%= image_tag(product.image.url(:thumb)) %>
             </div>
-            <div id="p_pro_detail1"><p>Strawberry</p></div>
-            <div id="cost"><p >$$$</p></div>
+            <div class="p_pro_detail1"><p><%= product.name %></p></div>
+            <div class="cost"><p class="<%= 'line' if product.discount != 0 %>",style="color:grey;font-weight:500;" ><%= number_to_currency(product.price) %></p></div>
+            <% if product.discount != 0 %>
+            <div class="discout_2"><p style="color:tomato;padding-top:0;padding-bottom:0;"><%= number_to_currency(product.price_discout) %></p></div>
+            <% end %>
         </div>
-        <div class="detail-product">
-           <div id="dit_me_2"><p><i class="fa fa-plus" aria-hidden="true"></i></p></div>
-           <div id="dit_me"><a href="cart.php"><p>ADD <i class="fa fa-plus" aria-hidden="true"></i></p></a></div>
-              <div id="img_pro_detail">
-              <img src="img/product3.jpg" alt="salad leaf">
-            </div>
-            <div id="p_pro_detail1"><p>Lemon</p></div>
-            <div id="cost"><p >$$$</p></div>
-        </div>
-        <div class="detail-product">
-           <div id="dit_me_2"><p><i class="fa fa-plus" aria-hidden="true"></i></p></div>
-           <div id="dit_me"><a href="cart.php"><p>ADD <i class="fa fa-plus" aria-hidden="true"></i></p></a></div>
-              <div id="img_pro_detail">
-              <img src="img/product4.jpg" alt="salad leaf">
-            </div>
-            <div id="p_pro_detail1"><p>Bluebeeries</p></div>
-            <div id="cost"><p >$$$</p></div>
-        </div>
-        <div class="detail-product">
-           <div id="dit_me_2"><p><i class="fa fa-plus" aria-hidden="true"></i></p></div>
-           <div id="dit_me"><a href="cart.php"><p>ADD <i class="fa fa-plus" aria-hidden="true"></i></p></a></div>
-              <div id="img_pro_detail">
-              <img src="img/product4.jpg" alt="salad leaf">
-            </div>
-            <div id="p_pro_detail1"><p>Bluebeeries</p></div>
-            <div id="cost"><p >$$$</p></div>
-        </div>
+    <% end %>
     </div>
     <div class="news">
          <div class="like_news">

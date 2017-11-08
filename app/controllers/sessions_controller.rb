@@ -9,9 +9,9 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password])
       log_in(user)
       params[:session][:remember_me] == '1' ? remember(user) : forget(user)
-      if user.role == 'admin'
+      if user.role
         redirect_to admin_dashboard_path
-      elsif user.role == "customer"
+      else
         flash[:success] = "Welcome to ChanRau"
         current_cart.user = current_user
         current_cart.save
