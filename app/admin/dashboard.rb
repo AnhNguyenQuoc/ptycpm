@@ -47,15 +47,24 @@ ActiveAdmin.register_page "Dashboard" do
             column("Email") {|order| order.email}
             column("Total") {|order| number_to_currency(order.total)}
             column("State") {|order|
-            if order.state
-              status_tag("complete")
-             else
-              status_tag("in processing")
-            end
-
+              if order.state
+               status_tag("complete")
+              else
+               status_tag("in processing")
+              end
           }
           end
           strong {link_to "View all orders", admin_orders_path}
+        end
+      end
+      column max_width: "400px", min_width: "200px" do
+        panel "Sale per day" do
+          column_chart Order.group_by_day_of_week(:created_at, format: "%a").count, refresh: 60
+        end
+      end
+      column max_width: "500px", min_width: "200px" do
+        panel "Order" do
+          pie_chart [['Complete', Order.where(state: true).size], ['Inprocess', Order.where(state: false).size]]
         end
       end
     end

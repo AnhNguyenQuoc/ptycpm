@@ -37,6 +37,8 @@ gem 'jquery-rails'
 gem 'activeadmin'
 gem 'will_paginate'
 gem 'phony_rails'
+gem 'chartkick'
+gem 'groupdate'
 # gem 'capistrano-rails', group: :development
 gem 'country_select'
 group :development, :test do
