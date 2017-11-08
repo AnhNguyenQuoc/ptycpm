@@ -36,6 +36,7 @@ gem 'jquery-rails'
 # Use Capistrano for deployment
 gem 'activeadmin'
 gem 'will_paginate'
+gem 'phony_rails'
 # gem 'capistrano-rails', group: :development
 gem 'country_select'
 group :development, :test do

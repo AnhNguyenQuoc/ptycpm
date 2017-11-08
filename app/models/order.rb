@@ -7,6 +7,14 @@ class Order < ApplicationRecord
         "Visa" => 3
     }
 
+    scope :complete, -> {where(state: true)}
+    scope :inprocessing, -> {where(state: false)}
+    validates :name, presence: true, length: {maximum: 50}
+    VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+    validates :email, presence: true,length: {maximum: 255},format: { with: VALID_EMAIL_REGEX }
+    validates :phone, presence: true, numericality: true, length: {in: 9..12}
+    validates :address, presence: true, length: {maximum: 50}
+    validates :pay_type, presence: true, inclusion: {in: pay_types.keys}
     def add_line_item_from_cart(cart)
         cart.line_items.each do |item|
             product = Product.find_by(id: item.product)

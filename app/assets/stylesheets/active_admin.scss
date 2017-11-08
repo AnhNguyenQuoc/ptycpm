@@ -16,3 +16,14 @@
 // For example, to change the default status-tag color:
 //
 //   .status_tag { background: #6090DB; }
+.status_tag .admin {
+    background-color: blue;
+}
+
+.status_tag .customer {
+    background-color: red;
+}
+
+.complete {
+    background-color: green;
+}

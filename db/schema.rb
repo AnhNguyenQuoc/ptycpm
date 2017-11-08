@@ -49,9 +49,9 @@ ActiveRecord::Schema.define(version: 20171106160342) do
     t.string "name"
     t.string "email"
     t.string "address"
-    t.integer "phone"
+    t.string "phone"
     t.integer "pay_type"
-    t.integer "status", default: 0
+    t.boolean "state", default: false
     t.integer "VAT", default: 10
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -81,12 +81,12 @@ ActiveRecord::Schema.define(version: 20171106160342) do
     t.string "name"
     t.string "email"
     t.string "password_digest"
-    t.integer "phone"
+    t.string "phone"
     t.string "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "remember_digest"
-    t.string "role", default: "customer"
+    t.boolean "role", default: false
   end
 
 end

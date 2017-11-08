@@ -1,5 +1,18 @@
 <% if !logged_in? %>
+
   <%= form_for(@order) do |f| %>
+  <% if @order.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-danger">
+      The form contains <%= pluralize(@order.errors.count, "error") %>.
+    </div>
+    <ul>
+    <% @order.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
   <p>
    <%= f.label :name %><br>
    <%= f.text_field :name, required: true, autofocus: true %>
@@ -20,37 +33,49 @@
     <%= f.label :pay_type %>
     <%= f.select :pay_type, Order.pay_types.keys, prompt: "select a payment method" %>
 </p>
-
+<%= f.hidden_field :total,:value => @order.total_price %>
 <p>
   <%= f.submit %>
 </p>
 <% end %>
 <% else %>
 <%= form_for(@order) do |f| %>
-<%= f.hidden_field :user_id,value: current_user.id %>
-<p>
- <%= f.label :name %><br>
- <%= f.text_field :name, value: current_user.name %>
-</p>
-<p>
-<%= f.label :email %><br>
-<%= f.email_field :email, value: current_user.email %>
-</p>
-<p>
-<%= f.label :address %><br>
-<%= f.text_area :address,value: current_user.address %>
-</p>
-<p>
-  <%= f.label :phone %>
-  <%= f.text_field :phone, value: current_user.phone %>
-</p>
-<p>
-  <%= f.label :pay_type %>
-  <%= f.select :pay_type, Order.pay_types.keys, prompt: "select a payment method" %>
-</p>
-
-<p>
-<%= f.submit %>
-</p>
-<% end %>
+  <% if @order.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-danger">
+      The form contains <%= pluralize(@order.errors.count, "error") %>.
+    </div>
+    <ul>
+    <% @order.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+    <%= f.hidden_field :user_id,value: current_user.id %>
+    <p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name, value: current_user.name %>
+    </p>
+    <p>
+    <%= f.label :email %><br>
+    <%= f.email_field :email, value: current_user.email %>
+    </p>
+    <p>
+    <%= f.label :address %><br>
+    <%= f.text_area :address,value: current_user.address %>
+    </p>
+    <p>
+      <%= f.label :phone %>
+      <%= f.text_field :phone, value: current_user.phone %>
+    </p>
+    <p>
+      <%= f.label :pay_type %>
+      <%= f.select :pay_type, Order.pay_types.keys, prompt: "select a payment method" %>
+    </p>
+      <%= f.hidden_field :total, :value => @order.total_price %>
+    <p>
+    <%= f.submit %>
+    </p>
+  <% end %>
 <% end %>

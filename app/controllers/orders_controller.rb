@@ -15,18 +15,22 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.add_line_item_from_cart(@current_cart)
-    @order.save
-    if logged_in?
-      Cart.destroy(@current_cart.id)
-    else
-      Cart.destroy(session[:cart_id])
-      session[:cart_id] = nil
+    if @order.save
+        if logged_in?
+          Cart.destroy(@current_cart.id)
+        else
+          Cart.destroy(session[:cart_id])
+          session[:cart_id] = nil
+         end
+         redirect_to root_path
+     else
+      flash.now[:danger] = "Let try again!!"
+      render 'new'
     end
-    redirect_to root_path
   end
 
   private
   def order_params
-    params.require(:order).permit(:name, :email, :address, :phone, :pay_type)
+    params.require(:order).permit(:name, :email, :address, :phone, :pay_type, :total)
   end
 end

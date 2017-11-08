@@ -4,9 +4,9 @@ class CreateOrders < ActiveRecord::Migration[5.1]
       t.string :name
       t.string :email
       t.string :address
-      t.integer :phone
+      t.string :phone
       t.integer :pay_type
-      t.integer :status, default: "Inprogress"
+      t.boolean :state, default: false
       t.integer :VAT,default: 10
 
       t.timestamps

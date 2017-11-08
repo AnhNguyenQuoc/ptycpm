@@ -3,6 +3,9 @@ class User < ApplicationRecord
   has_one :cart
   has_many :orders
   before_save {self.email = email.downcase}
+
+  scope :admin, -> {where(role: true)}
+  scope :customer, -> {where(role: false)}
   validates :name, presence: true, length: {maximum: 50}
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, uniqueness: { case_sensitive: false },
@@ -10,7 +13,7 @@ class User < ApplicationRecord
                                                    format: { with: VALID_EMAIL_REGEX }
   validates :phone, presence: true, numericality: true, length: {in: 9..12}
   validates :address, presence: true, length: {maximum: 50}
-  validates :password, presence: true, length: {minimum: 6}, allow_nil: true
+  validates :password, presence: true, length: {minimum: 6}, allow_nil: true, on: :create
   has_secure_password
 
 

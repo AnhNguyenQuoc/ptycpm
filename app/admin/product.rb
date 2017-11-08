@@ -1,7 +1,7 @@
 ActiveAdmin.register Product do
     permit_params :name, :price, :discount, :description, :view, :total, :catalog, :source, :image
     filter :name
-    filter :price, as: :numeric
+    filter :price
     filter :catalog, as: :select, collection: {"Leafy and salad vegetables" => 1,
     "Fruits" => 2,
     "Flowers and flower buds" => 3,
@@ -33,7 +33,8 @@ ActiveAdmin.register Product do
         actions
     end
 
-    form title: 'Create Product' do |f|
+
+    form do |f|
         f.inputs "Products" do
             f.input :name
             f.input :price, type: :numeric
@@ -47,5 +48,4 @@ ActiveAdmin.register Product do
         end
         f.actions
     end
-   
 end
