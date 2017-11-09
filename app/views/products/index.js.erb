@@ -1,5 +1,5 @@
 <% if @products.count == 0 %>
-$('.view-product').html("<div class='notify'><strong>NOTIFY</strong><span>Dont have product in this catalog</span></div>");
+$('.view-product').html("<div class='notify long_notify'><strong>NOTIFY</strong><span>Dont have product in this catalog</span></div>");
 <% else %>
 $('.view-product').html("<%= j render 'products' %>");
 <% end %>

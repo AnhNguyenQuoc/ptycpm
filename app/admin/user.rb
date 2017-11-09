@@ -12,6 +12,15 @@ ActiveAdmin.register User do
     scope :customer
     config.per_page = 20
 
+    batch_action :to_admin do |ids|
+        batch_action_collection.find(ids).each do |user|
+          user.role = true
+          user.save
+        end
+        redirect_to admin_users_path, alert: "User change admin complete"
+    end
+
+
     index do
         selectable_column
         column :name

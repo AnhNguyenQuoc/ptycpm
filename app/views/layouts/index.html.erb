@@ -8,23 +8,30 @@
         </div>
     </div>
     <div class="instead">
-      
+        <%= link_to products_path(:catalog => 'Leafy and salad vegetables') do %>
         <div id="item1" class="item">
             <p>Leafy and</p>
             <p>Salad</p>
         </div>
-        <div id="item2"  class="item">
+        <% end %>
         <%= link_to products_path(:catalog => 'Fruits') do %>
-          <p>Fruit</p>
+        <div id="item2"  class="item">
+                <p>Fruit</p>
+                <p>More Fruit</p>
+              </div>
           <% end %>
-        </div>
+        <%= link_to products_path(:catalog => 'Flowers and flower buds') do %>
         <div id="item3"  class="item">
           <p>Flowers and </p>
           <p>Flower Buds</p>
         </div>
+        <% end %>
+        <%= link_to products_path(:catalog => 'Podded vegetables') do %>
         <div id="item4"  class="item">
           <p>Podded</p>
+          <p>Vegetables</p>
         </div>
+        <% end %>
     </div>
     <div class="organic">
         <p style="font-size:150%;font-family: 'Merriweather', serif;">Best Seller</p>

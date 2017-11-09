@@ -24,6 +24,7 @@ class OrdersController < ApplicationController
           session[:cart_id] = nil
           @order.update_attribute(:total, @order.total_price)
          end
+         flash[:success] = "Your order is done"
          redirect_to root_path
     else
       flash.now[:danger] = "Let try again!!"

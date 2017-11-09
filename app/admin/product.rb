@@ -14,7 +14,12 @@ ActiveAdmin.register Product do
     scope :all, default: true
     scope :out_of_stock
     config.per_page = 20
-    
+     batch_action :destroy do |ids|
+        batch_action_collection.find(ids).each do |product|
+          product.destroy
+        end
+        redirect_to admin_products_path, alert: "Delete user complete"
+    end
     index do
         selectable_column
         column :name
@@ -24,7 +29,13 @@ ActiveAdmin.register Product do
         column :discount
         column :description
         column :view
-        column :total
+        column :total do |product|
+            if product.total <= 0
+                status_tag("Out of stock")
+            else
+                product.total
+            end
+        end
         column :catalog
         column :source
         column :image do |m|

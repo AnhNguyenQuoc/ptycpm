@@ -7,7 +7,8 @@ ActiveAdmin.register Order do
     filter :name
     filter :email
     filter :address
-    filter :pay_type, as: :select
+    filter :pay_type, as: :select, collection: {"Cash On Delivery" => 1,
+    "Credit Cart" => 2}
 
     scope :all, default: true
     scope :complete

@@ -1,12 +1,29 @@
 
-<p>Name: <%= @product.name %>, <%= number_to_currency(@product.price) %></p>
-<% if @product.total > 0 %>
-<p>Stock: <%= @product.total %></p>
-<% else %>
-<p>Out of stock</p>
-<% end %>
-<p><%= image_tag @product.image.url(:medium) %></p>
-<p><%= @product.source %></p>
- <p><%= button_to "Edit", edit_product_path(@product), method: :get %></p>
- <p><%= button_to "Delete", products_path(@product), method: :delete, data: {comfirm: "Are you sure"} %></p>
- <p><%= button_to "Add to cart", line_items_path(product_id: @product.id) %></p>
+ <div class="content6">
+        <div id="header_detail_pro">
+             <p><%= @product.catalog %></p>
+             <p id="hover_p"><i class="fa fa-heart" aria-hidden="true"></i> I Love It!</p>
+        </div>
+        <div id="detail_pro">
+            <div style="padding:10px;">
+      
+                <%= image_tag(@product.image.url(:medium), :style => "border-radius:50% 50%;") %>
+            </div>
+            <div style="padding:10px;">
+                <p><strong><%= @product.name %></strong></p>
+                <p style="color:tomato;"><%= number_to_currency(@product.price) %></p>
+                <% if @product.total > 0 %>
+                <p style="font-style:italic;color:green;">Stock: <%= @product.total %></p>
+                <% else %>
+                <p style="font-style:italic;color:green;">Out of Stock</p>
+                <% end %>
+            </div>
+            <div>
+                <%= link_to "Buy now", line_items_path(product_id: @product.id), :style => "background:tomato;color:white;border:none;padding:20px 50px;margin:20px 0 0 40px;position: absolute;", method: :post %>
+            </div>
+        </div>
+        <div id="description">  
+            <%= @product.description %>
+        </div>
+        
+    </div>

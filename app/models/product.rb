@@ -4,8 +4,8 @@ has_many :line_items
 before_destroy :ensure_not_referenced_by_any_line_item
 
 
-scope :out_of_stock, -> { where(total: 0)}
-
+scope :out_of_stock, -> { where('total <= 0')}
+scope :starts_with, -> (name) { where("name like ?", "#{name}%")}
 scope :catalog, -> (catalog) {where catalog: catalog}
     enum catalog: {
         "Leafy and salad vegetables" => 1,

@@ -2,48 +2,61 @@
         <div id="header-name">
             <p>LET's  SHOPPING  <i class="fa fa-chevron-circle-right" aria-hidden="true"></i></p>
         </div>
-        <div id="categories" style="grid-row: 2/3">
-            <div class="cate">
-                <p>CATEGORIES</p>
+        <div class="tonghop">
+            <div class="tonghop1">
+               <div id="categories">
+                       <div class="cate">
+                           <p>CATEGORIES</p>
+                       </div>
+                       <ul id="choose">
+                            <li><%= link_to "All Items", products_path, remote: true %></li>
+                            <li><%= link_to "Leafy and salad vegetables", products_path(:catalog => 'Leafy and salad vegetables'), remote: true %></li>
+                            <li><%= link_to "Fruits", products_path(:catalog => 'Fruits'), remote: true %></li>
+                            <li><%= link_to "Flowers and flower buds", products_path(:catalog => 'Flowers and flower buds'), remote: true %></li>
+                            <li><%= link_to "Podded vegetables", products_path(:catalog => 'Podded vegetables'), remote: true %></li>
+                            <li><%= link_to "Bulb and stem vegetables", products_path(:catalog => 'Bulb and stem vegetables'), remote: true %></li>
+                            <li><%= link_to "Root and tuberous vegetables", products_path(:catalog => 'Root and tuberous vegetables'), remote: true %></li>
+                            <li><%= link_to "Sea vegetables", products_path(:catalog => 'Sea vegetables'), remote: true %></li>
+                       </ul>
+                </div>
+               <div id="bestseller">
+                   <div class="cate">
+                       <p>BESTSELLER</p>
+                   </div>
+                   <ul id="choose">
+                       <li><a href="">1</a></li>
+                       <li><a href="">2</a></li>
+                       <li><a href="">3</a></li>
+                       <li><a href="">4</a></li>
+                       <li><a href="">5</a></li>
+                   </ul>
+               </div>
+           </div>
+           <div class="tonghop2">
+               <div id="featured">
+                   <div id="featured-product">
+                         <p>FEATURED PRODUCTS </p>
+                        <div class="search ">
+                                <%= form_tag products_path, remote: true, method: :get do |f| %>    
+                                    <%= label_tag 'starts_with', '<i class="fa fa-search" aria-hidden="true"></i>'.html_safe  %>                  
+                                    <%= text_field_tag :starts_with, params[:starts_with], onkeyup: "$(this).parent('form').submit();", placeholder: "Anything you want?" %>
+                                <% end %>
+                        </div>
+                   </div>
+                   <div class="view-product">
+                      <%= render 'products' %>
+                    </div>   	<!--view-product-->
+                </div>
             </div>
-            <ul id="choose">
-                <li><%= link_to "All Items", products_path, remote: true %></li>
-                <li><%= link_to "Leafy and salad vegetables", products_path(:catalog => 'Leafy and salad vegetables'), remote: true %></li>
-                <li><%= link_to "Fruits", products_path(:catalog => 'Fruits'), remote: true %></li>
-                <li><%= link_to "Flowers and flower buds", products_path(:catalog => 'Flowers and flower buds'), remote: true %></li>
-                <li><%= link_to "Podded vegetables", products_path(:catalog => 'Podded vegetables'), remote: true %></li>
-                <li><%= link_to "Bulb and stem vegetables", products_path(:catalog => 'Bulb and stem vegetables'), remote: true %></li>
-                <li><%= link_to "Root and tuberous vegetables", products_path(:catalog => 'Root and tuberous vegetables'), remote: true %></li>
-                <li><%= link_to "Sea vegetables", products_path(:catalog => 'Sea vegetables'), remote: true %></li>
-            </ul>
-        </div>
-        <div id="bestseller">
-            <div class="cate">
-                <p>BESTSELLER</p>
-            </div>
-            <ul id="choose">
-                <li><a href="">1</a></li>
-                <li><a href="">2</a></li>
-                <li><a href="">3</a></li>
-                <li><a href="">4</a></li>
-                <li><a href="">5</a></li>
 
-            </ul>
-        </div>
-        <div id="featured" style="grid-row: none">
-			<div id="featured-product">
-				<p>FEATURED PRODUCTS </p>
-			</div>
-			<div class="view-product">
-                <%= render @products %>
-			</div>
-		</div>
+       </div>
         <div id="number">
 
             <div class="pages empty" >
       <div class="empty">
       </div>
       <span style="text-align: right;">
+    
           <%= will_paginate @products %>
       <div class="empty">
       </div>

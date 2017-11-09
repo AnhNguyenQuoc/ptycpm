@@ -1,7 +1,10 @@
 <div class="vegets">
-<%= link_to(product) do %>
-<%= image_tag(product.image.url(:medium)) %>
-<p style="line-height: 1.2;"><%= product.name %></p>
-<p style="color:red; font-style: italic; font-size:16px;"><%= number_to_currency(product.price) %></p>
-<% end %>
+        <%= link_to product_path(product) do %>
+        <% if product.discount > 0 %>
+        <div class="discout_shop"><p style="color:white;padding:15px;background:tomato;margin-left:150px;margin-top:-7px;position: absolute;">-<%= product.discount %>%</p></div>
+        <% end %>
+            <%= image_tag(product.image.url(:medium)) %>
+            <p style="line-height: 1.2;"><%= product.name %></p>
+            <p style="color:red; font-style: italic; font-size:16px;"><%= number_to_currency(product.price) %></p>
+        <% end %>
 </div>

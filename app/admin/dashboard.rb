@@ -16,7 +16,7 @@ ActiveAdmin.register_page "Dashboard" do
       end
       column max_width: "400px", min_width: "200px" do
         panel "New products" do
-          table_for Product.order('id desc').limit(5) do
+          table_for Product.order(id: :desc).limit(5) do
             column("Name")  {|product| link_to(product.name, admin_product_path(product))}
             column("Discount") {|product| product.discount}
             column("Price") {|product| number_to_currency(product.price)}
@@ -46,7 +46,7 @@ ActiveAdmin.register_page "Dashboard" do
     columns do
       column max_width: "400px", min_width: "200px" do
         panel "New orders" do
-          table_for Order.limit(5) do
+          table_for Order.order('id desc').limit(5) do
             column("Name") {|order| link_to(order.name, admin_order_path(order))}
             column("Email") {|order| order.email}
             column("Total") {|order| number_to_currency(order.total)}
@@ -67,7 +67,7 @@ ActiveAdmin.register_page "Dashboard" do
         end
       end
       column max_width: "500px", min_width: "200px" do
-        panel "Order" do
+        panel "Order status" do
           pie_chart [['Complete', Order.where(state: true).size], ['Inprocess', Order.where(state: false).size]]
         end
       end

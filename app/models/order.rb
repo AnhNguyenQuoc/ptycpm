@@ -2,9 +2,8 @@ class Order < ApplicationRecord
     has_many :line_items, dependent: :destroy
     belongs_to :user, optional: true
     enum pay_type: {
-        "Credit Cart" => 1,
-        "Purchase order" => 2,
-        "Visa" => 3
+        "Cash On Delivery" => 1,
+        "Credit Cart" => 2
     }
 
     scope :complete, -> {where(state: true)}
