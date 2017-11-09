@@ -6,7 +6,7 @@ before_destroy :ensure_not_referenced_by_any_line_item
 
 scope :out_of_stock, -> { where(total: 0)}
 
-
+scope :catalog, -> (catalog) {where catalog: catalog}
     enum catalog: {
         "Leafy and salad vegetables" => 1,
         "Fruits" => 2,

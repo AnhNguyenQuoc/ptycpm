@@ -14,7 +14,9 @@
             <p>Salad</p>
         </div>
         <div id="item2"  class="item">
+        <%= link_to products_path(:catalog => 'Fruits') do %>
           <p>Fruit</p>
+          <% end %>
         </div>
         <div id="item3"  class="item">
           <p>Flowers and </p>
@@ -33,13 +35,13 @@
         <div class="detail-product">
            <div class="dit_me_2"><p style="color:white;"><i class="fa fa-plus" aria-hidden="true"></i></p></div>
            <% if product.discount !=0 %>
-           <div class="discout"><p style="color:white;background:tomato;margin-left:120px;margin-top:-7px; border-radius:50% 50%;"><%= product.discount %></p></div>
+           <div class="discout"><p style="color:white;background:tomato;margin-left:120px;margin-top:-7px; border-radius:50% 50%;">-<%= product.discount %>%</p></div>
            <% end %>
            <div class="dit_me">
               <%= link_to "<p style='color:white;'>ADD <i class='fa fa-plus' aria-hidden='true'></i></p>".html_safe, line_items_path(product_id: product.id), method: :post %>
             </div>
             <div class="img_pro_detail">
-              <%= image_tag(product.image.url(:thumb)) %>
+              <%= image_tag(product.image.url(:medium)) %>
             </div>
             <div class="p_pro_detail1"><p><%= product.name %></p></div>
             <div class="cost"><p class="<%= 'line' if product.discount != 0 %>",style="color:grey;font-weight:500;" ><%= number_to_currency(product.price) %></p></div>

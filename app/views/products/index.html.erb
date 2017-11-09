@@ -2,19 +2,19 @@
         <div id="header-name">
             <p>LET's  SHOPPING  <i class="fa fa-chevron-circle-right" aria-hidden="true"></i></p>
         </div>
-        <div id="categories">
+        <div id="categories" style="grid-row: 2/3">
             <div class="cate">
                 <p>CATEGORIES</p>
             </div>
             <ul id="choose">
-                <li><a href="">Leafy and salad vegetables</a></li>
-                <li><a href="">Fruits</a></li>
-                <li><a href="">Flowers and flower buds</a></li>
-                <li><a href="">	Podded vegetables</a></li>
-                <li><a href="">	Bulb and stem vegetables</a></li>
-      <li><a href="">Root and tuberous vegetables</a></li>
-                <li><a href="">	Sea vegetables</a></li>
-
+                <li><%= link_to "All Items", products_path, remote: true %></li>
+                <li><%= link_to "Leafy and salad vegetables", products_path(:catalog => 'Leafy and salad vegetables'), remote: true %></li>
+                <li><%= link_to "Fruits", products_path(:catalog => 'Fruits'), remote: true %></li>
+                <li><%= link_to "Flowers and flower buds", products_path(:catalog => 'Flowers and flower buds'), remote: true %></li>
+                <li><%= link_to "Podded vegetables", products_path(:catalog => 'Podded vegetables'), remote: true %></li>
+                <li><%= link_to "Bulb and stem vegetables", products_path(:catalog => 'Bulb and stem vegetables'), remote: true %></li>
+                <li><%= link_to "Root and tuberous vegetables", products_path(:catalog => 'Root and tuberous vegetables'), remote: true %></li>
+                <li><%= link_to "Sea vegetables", products_path(:catalog => 'Sea vegetables'), remote: true %></li>
             </ul>
         </div>
         <div id="bestseller">
@@ -30,16 +30,12 @@
 
             </ul>
         </div>
-        <div id="featured">
+        <div id="featured" style="grid-row: none">
 			<div id="featured-product">
 				<p>FEATURED PRODUCTS </p>
 			</div>
 			<div class="view-product">
-                <% @products.each do |product| %>
-				    <div class="vegets">
-                        <%= render partial: "product", locals: {product: product} %>
-                    </div>
-                <% end %>
+                <%= render @products %>
 			</div>
 		</div>
         <div id="number">

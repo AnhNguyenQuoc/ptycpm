@@ -26,14 +26,18 @@ ActiveAdmin.register_page "Dashboard" do
           strong {link_to "View all products", admin_products_path}
         end
       end
-      column max_width: "550px", min_width: "200px" do
+      column max_width: "600px", min_width: "200px" do
         panel "New user" do
           table_for User.order('id desc').limit(5) do
             column("Name")  {|user| link_to(user.name, admin_product_path(user))}
             column("Email") {|user| user.email}
             column("phone") {|user| user.phone}
-            column("address") {|user| user.address}
-            column("role"){|user| user.role} 
+            column("role"){|user| 
+            if user.role
+              status_tag("admin")
+            else
+              status_tag("customer")
+            end}
           end
           strong {link_to "View all user", admin_users_path}
         end

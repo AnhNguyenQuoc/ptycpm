@@ -18,12 +18,14 @@ class OrdersController < ApplicationController
     if @order.save
         if logged_in?
           Cart.destroy(@current_cart.id)
+          @order.update_attribute(:total, @order.total_price)
         else
           Cart.destroy(session[:cart_id])
           session[:cart_id] = nil
+          @order.update_attribute(:total, @order.total_price)
          end
          redirect_to root_path
-     else
+    else
       flash.now[:danger] = "Let try again!!"
       render 'new'
     end
@@ -31,6 +33,6 @@ class OrdersController < ApplicationController
 
   private
   def order_params
-    params.require(:order).permit(:name, :email, :address, :phone, :pay_type, :total)
+    params.require(:order).permit(:name, :email, :address, :phone, :pay_type)
   end
 end

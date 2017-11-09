@@ -26,7 +26,7 @@ class Order < ApplicationRecord
 
     def total_price
         sum = line_items.to_a.sum {|item| item.total_price} + ((line_items.to_a.sum {|item| item.total_price} * self.VAT) / 100)
-        self.update_attribute(:total, sum)
+        update_attribute(:total, sum)
         return sum
     end
 end

@@ -33,7 +33,7 @@
                   <ul>
                       <li><%= link_to "Home", root_path %></li>
                       <li><a href="blog.php">blog</a></li>
-                      <li  id="li_hover"><a href="shop.php">shop</a></li>
+                      <li  id="li_hover"><%= link_to "shop", shop_path %></li>
                       <% if !logged_in? %>
                       <li><%= link_to "sign in", login_path %></li>
                       <li><%= link_to "sign up", signup_path %></li>
@@ -47,7 +47,7 @@
           </div>
 
           <% flash.each do |message_type, message| %>
-                <div class="alert alert-<%=message_type %>"><%= message %></div>
+                <div class="<%=message_type %>"><strong><%= message_type %></strong><span><%= message %></span></div>
             <% end %>
     <%= yield %>
     <footer>

@@ -1,5 +1,4 @@
 <% if !logged_in? %>
-
   <%= form_for(@order) do |f| %>
   <% if @order.errors.any? %>
   <div id="error_explanation">
@@ -33,7 +32,6 @@
     <%= f.label :pay_type %>
     <%= f.select :pay_type, Order.pay_types.keys, prompt: "select a payment method" %>
 </p>
-<%= f.hidden_field :total,:value => @order.total_price %>
 <p>
   <%= f.submit %>
 </p>
@@ -73,7 +71,6 @@
       <%= f.label :pay_type %>
       <%= f.select :pay_type, Order.pay_types.keys, prompt: "select a payment method" %>
     </p>
-      <%= f.hidden_field :total, :value => @order.total_price %>
     <p>
     <%= f.submit %>
     </p>

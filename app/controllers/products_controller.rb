@@ -7,6 +7,7 @@ class ProductsController < ApplicationController
   
   def index
     @products = Product.all.paginate(:page => params[:page], :per_page => 9)
+    @products = @products.catalog(params[:catalog]).paginate(:page => params[:page], :per_page => 9) if params[:catalog].present?
   end
 
   def show  

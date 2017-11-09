@@ -1,5 +1,7 @@
+<div class="vegets">
 <%= link_to(product) do %>
 <%= image_tag(product.image.url(:medium)) %>
 <p style="line-height: 1.2;"><%= product.name %></p>
 <p style="color:red; font-style: italic; font-size:16px;"><%= number_to_currency(product.price) %></p>
 <% end %>
+</div>
