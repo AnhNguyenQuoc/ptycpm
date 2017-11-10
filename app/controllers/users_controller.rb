@@ -1,9 +1,10 @@
 class UsersController < ApplicationController
-
+  load_and_authorize_resource
   before_action :check_user, only: [:edit, :update]
   before_action :correct_user, only: [:edit, :update]
-  skip_authorization_check
-  
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to root_path, :alert => "You don't have permission"
+  end
   def show
     @user = User.find(params[:id])
   end

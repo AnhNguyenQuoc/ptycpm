@@ -50,7 +50,7 @@ ActiveAdmin.register Product do
             f.input :name
             f.input :price, type: :numeric
             f.input :discount
-            f.input :description
+            f.input :description, as: :html_editor
             f.input :view, as: :hidden
             f.input :total
             f.input :image, required: true, as: :file

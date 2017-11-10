@@ -1,0 +1,3 @@
+<% @cart.line_items.each do |line_item| %>
+    <%= render partial: "line_item", locals: {line_item: line_item} %>
+<% end %>

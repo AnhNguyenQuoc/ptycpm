@@ -1,5 +1,4 @@
 class SessionsController < ApplicationController
-  skip_authorization_check
   before_action :check_login, only: [:new, :create]
   def new
   end

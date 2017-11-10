@@ -3,10 +3,12 @@ class Ability
 
   def initialize(user)
     user ||= User.new # guest user (not logged in)
-    if user.role
+    if user.role == true
       can :manage, :all # if user is admin, can access any action in all controller
+      can :manage, ActiveAdmin::Page, name: "Dashboard"
     else
-      can :manage, :all
+      can [:create, :update], User
+      can [:create], Order
     end
 
   end

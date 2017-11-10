@@ -2,8 +2,6 @@ class CartsController < ApplicationController
   before_action :set_cart, only: [:show, :edit, :update, :destroy]
   before_action :correct_cart, only: [:show, :edit, :update, :destroy]
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_cart
-  skip_authorization_check
-  
   # GET /carts
   # GET /carts.json
   def index
@@ -32,7 +30,7 @@ class CartsController < ApplicationController
 
     respond_to do |format|
       if @cart.save
-        format.html { redirect_to @cart, notice: 'Cart was successfully created.' }
+        format.html { redirect_to @cart }
         format.json { render :show, status: :created, location: @cart }
       else
         format.html { render :new }
@@ -59,10 +57,8 @@ class CartsController < ApplicationController
   # DELETE /carts/1.json
   def destroy
     @cart.destroy
-    respond_to do |format|
-      format.html { redirect_to root_path, notice: 'Cart was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    flash[:success] = "Cart deleted"
+    redirect_to root_path
   end
 
   private

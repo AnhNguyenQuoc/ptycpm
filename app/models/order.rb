@@ -5,7 +5,7 @@ class Order < ApplicationRecord
         "Cash On Delivery" => 1,
         "Credit Cart" => 2
     }
-
+    
     scope :complete, -> {where(state: true)}
     scope :inprocessing, -> {where(state: false)}
     validates :name, presence: true, length: {maximum: 50}

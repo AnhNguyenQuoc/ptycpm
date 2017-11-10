@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  skip_authorization_check
+
   def index
     @orders = Order.all
   end
@@ -10,9 +10,11 @@ class OrdersController < ApplicationController
 
   def new
     @order = Order.new
+    @cart = @current_cart
   end
 
   def create
+    @cart = @current_cart
     @order = Order.new(order_params)
     @order.add_line_item_from_cart(@current_cart)
     if @order.save

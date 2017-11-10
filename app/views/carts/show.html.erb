@@ -1,27 +1,29 @@
-<h2>Cart show</h2>
-<ul>
-<% if @cart.line_items.count > 0 %>
-  <% @cart.line_items.each do |line_item| %>
-    <li>Item: <%= line_item.product.name %>/ Price: <%= number_to_currency(line_item.product.price) %>/ Quantity: <%= line_item.quantity %>/ Total Price: <%= number_to_currency(line_item.total_price) %>
 
-    <ul>
-      <li>
-        <%= link_to "Add one", line_item_add_path(:id => line_item), method: :post %>
-        <%= link_to "Reduce one", line_item_reduce_path(:id => line_item), method: :post %>
-      </li>
-      <li>
-        <%= link_to "Remove item", line_item_path(line_item), method: :delete %>
-      </li>
-    </ul>
-    <% end %>
-  <% else %>
-  <p>You have nothing</p>
-  <%= link_to "Return to store", products_path %>
-  <% end %>
-</ul>
-<h3>total: <%= number_to_currency(@cart.total_price) %></h3>
-<% if @cart.line_items.count > 0 %>
-<%= link_to "Proceed to checkout", new_order_path %><br>
 
-<%= link_to "Empty cart", cart_path(@current_cart),method: :delete, data: {confirm: "Are you sure?"} %>
-<% end %>
+
+<div class="content4">
+    <div id="header_cart">        
+          <p>MY SHOPPING CART <i class="fa fa-shopping-cart" aria-hidden="true"></i></p>     
+      </div>
+     
+     <div class="cart2">
+        <div id="p"><a href="shop.php"><p><i class="fa fa-chevron-left" aria-hidden="true"></i> Continue</p></a></div>
+        <div class="cart_2">
+             <div class="my_cart">
+                <p id="p_mycart"><strong>My Shopping Cart</strong></p>
+                <!--<p id="p_pro">My products</p>
+                <p id="p_cost">Quantity</p>
+                <p id="p_amount">Total</p>-->
+                <div id="carts">
+                    <%= render 'carts' %>
+                </div>
+               
+            </div>
+                <div class="info_cart">
+                    <%= render 'show_cart' %>
+                </div>
+        </div>
+       
+     </div>
+  
+   </div>

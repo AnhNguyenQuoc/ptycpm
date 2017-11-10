@@ -1,3 +1,12 @@
+GIT
+  remote: https://github.com/boontdustie/active_admin_editor.git
+  revision: efc7df212173cbac65dc95ed50e6f5917ae049c0
+  specs:
+    active_admin_editor (1.1.0)
+      activeadmin (>= 0.4.0)
+      ejs
+      rails (>= 3.0.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -95,6 +104,7 @@ GEM
       countries (~> 2.0)
       sort_alphabetical (~> 1.0)
     crass (1.0.2)
+    ejs (1.1.1)
     erubi (1.7.0)
     execjs (2.7.0)
     ffi (1.9.18)
@@ -272,6 +282,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_admin_editor!
   activeadmin
   bcrypt (~> 3.1.7)
   bootstrap-sass (~> 3.3.7)

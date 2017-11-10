@@ -1,0 +1,12 @@
+<%= image_tag(line_item.product.image.url(:medium), id: "img_pro") %>
+<div id="p_npro">
+    <p><%= line_item.product.name %></p>
+    <p style="font-size:85%;color:tomato;"><i>Only <%= line_item.product.total %> left in stock</i></p>
+</div>
+<p id="p_dolar"><%= number_to_currency(line_item.product.price) %></p>
+<div>
+    <%= link_to '<i class="fa fa-minus-square" aria-hidden="true"></i>'.html_safe,line_item_reduce_path(:id => line_item), method: :post, remote: true ,id: "reduct-item" %> 
+     <%= line_item.quantity %>
+    <%= link_to '<i class="fa fa-plus-square" aria-hidden="true"></i>'.html_safe, line_item_add_path(:id => line_item), method: :post, remote: true, id: "add-item" %>
+</div>
+<%= link_to "Delete", line_item, method: :delete %>

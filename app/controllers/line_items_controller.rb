@@ -1,7 +1,7 @@
 class LineItemsController < ApplicationController
   
   before_action :set_line_item, only: [:show, :edit, :update, :destroy]
-  skip_authorization_check
+
   # GET /line_items
   # GET /line_items.json
   def index
@@ -67,18 +67,31 @@ class LineItemsController < ApplicationController
 
   def add_quantity
     @line_item = LineItem.find(params[:id])
-    @line_item.quantity +=1
-    @line_item.save
-    redirect_to cart_path(@current_cart)
+    @cart = @current_cart
+    if @line_item.product.total > @line_item.quantity
+        @line_item.quantity +=1
+        @line_item.save
+        #redirect_to cart_path(@current_cart)
+    else
+      flash[:danger] = "Max stock"
+      #redirect_to cart_path(@current_cart)
+    end
+    respond_to do |format|
+      format.js
+    end
   end
 
   def reduce_quantity
     @line_item = LineItem.find(params[:id])
+    @cart = @current_cart
     if @line_item.quantity > 1
       @line_item.quantity -=1 
     end
     @line_item.save
-    redirect_to cart_path(@current_cart)
+    #redirect_to cart_path(@current_cart)
+    respond_to do |format|
+      format.js
+    end
   end
   private
     # Use callbacks to share common setup or constraints between actions.

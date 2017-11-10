@@ -1,0 +1,9 @@
+<p id="infor1">PRODUCT INFORMATION</p>
+<p id="infor2">Provisional :</p>
+<% @cart.line_items.each do |line_item| %>
+    <%= render partial: "line_item1", locals: {line_item: line_item} %>
+<% end %>
+<p id="infor3">Total :</p>
+<p id="cost2" style="height: 100%; margin-bottom: -45px;"><%= @cart.total_price %></p>
+<%= button_to "CARRY OUT PAYMENT", new_order_path, :style => "border:none;padding:20px;background:tomato;color:white;", method: :get %><br>
+<%= link_to "Empty cart", cart_path(@current_cart),method: :delete, data: {confirm: "Are you sure?"}, :style => 'margin-left: -120px' %>

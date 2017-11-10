@@ -1,7 +1,9 @@
 module ApplicationHelper
-    def hinted_text_field_tag(name, value = nil, hint = "Click and enter text", options={})
-    value = value.nil? ? hint : value
-    text_field_tag name, value, {:onclick => "if($(this).value == '#{hint}'){$(this).value = ''}", :onblur => "if($(this).value == ''){$(this).value = '#{hint}'}" }.update(options.stringify_keys)
-    end
-  
+    def show_errors(object, field_name)
+        if object.errors.any?
+          if !object.errors.messages[field_name].blank?
+            object.errors.messages[field_name].join(', ')
+          end
+        end
+      end 
 end

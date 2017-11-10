@@ -1,78 +1,121 @@
-<% if !logged_in? %>
-  <%= form_for(@order) do |f| %>
-  <% if @order.errors.any? %>
-  <div id="error_explanation">
-    <div class="alert alert-danger">
-      The form contains <%= pluralize(@order.errors.count, "error") %>.
+
+<div class="content5">
+    <div class="header_order">
+        <p>WE're COMMING FOR YOU <i class="fa fa-paper-plane-o" aria-hidden="true"></i></p>
     </div>
-    <ul>
-    <% @order.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
-  <p>
-   <%= f.label :name %><br>
-   <%= f.text_field :name, required: true, autofocus: true %>
-</p>
-<p>
-  <%= f.label :email %><br>
-  <%= f.email_field :email %>
-</p>
-<p>
-  <%= f.label :address %><br>
-  <%= f.text_area :address %>
-</p>
-<p>
-    <%= f.label :phone %>
-    <%= f.text_field :phone %>
-</p>
-<p>
-    <%= f.label :pay_type %>
-    <%= f.select :pay_type, Order.pay_types.keys, prompt: "select a payment method" %>
-</p>
-<p>
-  <%= f.submit %>
-</p>
-<% end %>
-<% else %>
-<%= form_for(@order) do |f| %>
-  <% if @order.errors.any? %>
-  <div id="error_explanation">
-    <div class="alert alert-danger">
-      The form contains <%= pluralize(@order.errors.count, "error") %>.
+    <div class="content_order">
+        <p style="color:white;background:#015416;padding:20px;font-size:150%;"><i class="fa fa-chevron-right" aria-hidden="true"></i> ADDRESS </p>
+        <p style="color:white;background:#b9cebf;padding:20px;font-size:150%;">PAYMENT</p>
+        <div id="content_order1" >
+            <div class="delivery">
+                <p id="p_left"><strong>Delivery address of the customer</strong></p>
+                <%= link_to "Login to order", login_path, style: "color:blue;font-size:80%;" %>
+            </div>
+            <div class="address">
+                <% if !logged_in? %>
+                  <%= form_for(@order) do |f| %>
+                <p>
+                    <%= f.label :name %><br>
+                    <%= f.text_field :name, required: true, autofocus: true %>
+                    <p class='error'><%= show_errors(@order, :name) %></p>
+                </p>
+                <p>
+                    <%= f.label :email %><br>
+                    <%= f.email_field :email %>
+                    <p class='error'><%= show_errors(@order, :email) %></p>
+                  </p>
+                  <p>
+                    <%= f.label :address %><br>
+                    <%= f.text_area :address %>
+                    <p class='error'><%= show_errors(@order, :address) %></p>
+                  </p>
+                  <p>
+                      <%= f.label :phone %><br>
+                      <%= f.telephone_field :phone %>
+                      <p class='error'><%= show_errors(@order, :phone) %></p>
+                  </p>
+                  <p>
+                      <%= f.label :pay_type %><br>
+                      <%= f.select :pay_type, Order.pay_types.keys, prompt: "select a payment method" %>
+                      <p class='error'><%= show_errors(@order, :pay_type) %></p>
+                  </p>
+                  <p>
+                    <%= f.submit %>
+                  </p>
+                <% end %>
+                <% else %>
+                <%= form_for(@order) do |f| %>
+                <%= f.hidden_field :user_id,value: current_user.id %>
+                <p>
+                    <%= f.label :name %><br>
+                    <%= f.text_field :name, required: true, value: current_user.name %>
+                    <p class='error'><%= show_errors(@order, :name) %></p>
+                </p>
+                <p>
+                    <%= f.label :email %><br>
+                    <%= f.email_field :email, value: current_user.email %>
+                    <p class='error'><%= show_errors(@order, :email) %></p>
+                  </p>
+                  <p>
+                    <%= f.label :address %><br>
+                    <%= f.text_area :address, value: current_user.address %>
+                    <p class='error'><%= show_errors(@order, :address) %></p>
+                  </p>
+                  <p>
+                      <%= f.label :phone %><br>
+                      <%= f.telephone_field :phone, value: current_user.phone %>
+                      <p class='error'><%= show_errors(@order, :phone) %></p>
+                  </p>
+                  <p>
+                      <%= f.label :pay_type %><br>
+                      <%= f.select :pay_type, Order.pay_types.keys, prompt: "select a payment method" %>
+                      <p class='error'><%= show_errors(@order, :pay_type) %></p>
+                  </p>
+                  <p>
+                    <%= f.submit %>
+                  </p>
+                <% end %>
+              <% end %>
+                <div id="form_address">
+                    <p><strong>Deliver information</strong></p>
+                    <p>Delivery standard: free</p>
+                    <p>From <%= Date.today.to_formatted_s(:short)  %> - <%= (Date.today  + 4.days).to_formatted_s(:short)  %></p>
+                </div>
+                 
+               
+            </div>
+        </div>
+        <div id="content_order2" >
+            <div class=delivery>
+                <p><strong>Order information</strong></p>
+                <p>(your products)</p>
+            </div>
+            <div class="order2">
+                <p>PRODUCTS</p>
+                <p>THE NUMBER OF</p>
+                <p>PRICE</p>
+            </div>
+            <div class="order2" style="background:white;">
+                <% @cart.line_items.each do |line_item| %>
+                    <p><%= line_item.product.name %></p>
+                    <p><%= line_item.quantity %></p>
+                <p style="color:tomato;"><%= line_item.total_price %></p>
+                <% end %>
+                <p><strong>Delivery standard</strong></p>
+            </div>
+            <div class="order_free" style="background:rgba(0,0,0,0.1);padding:5px 0;">
+                <p>Advance</p>
+                <p style="color:green;font-style:italic;">Free shipping</p>
+                <p style="color:green;font-style:italic;">0</p>
+            </div>
+            <div class="order_free" style="padding:5px 0;">
+                <p style="font-size:200%;"><strong>TOTAL : </strong></p>
+                <p style="color:tomato;"><%= @cart.total_price_include_vat %></p>
+                <p style="font-size:75%;">(VAT included)</p>
+            </div>
+            
+        </div>
     </div>
-    <ul>
-    <% @order.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-  <% end %>
-    <%= f.hidden_field :user_id,value: current_user.id %>
-    <p>
-    <%= f.label :name %><br>
-    <%= f.text_field :name, value: current_user.name %>
-    </p>
-    <p>
-    <%= f.label :email %><br>
-    <%= f.email_field :email, value: current_user.email %>
-    </p>
-    <p>
-    <%= f.label :address %><br>
-    <%= f.text_area :address,value: current_user.address %>
-    </p>
-    <p>
-      <%= f.label :phone %>
-      <%= f.text_field :phone, value: current_user.phone %>
-    </p>
-    <p>
-      <%= f.label :pay_type %>
-      <%= f.select :pay_type, Order.pay_types.keys, prompt: "select a payment method" %>
-    </p>
-    <p>
-    <%= f.submit %>
-    </p>
-  <% end %>
-<% end %>
+     
+     
+ </div>

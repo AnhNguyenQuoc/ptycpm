@@ -11,7 +11,7 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: { case_sensitive: false },
                                                    length: {maximum: 255},
                                                    format: { with: VALID_EMAIL_REGEX }
-  validates :phone, presence: true, numericality: true, length: {in: 9..12}
+  validates :phone, :presence => { :message => "can't be blank"}, :numericality =>{ :message => "only number"} , length: {in: 10..11, :message => 'must in 10-11 numbers'}
   validates :address, presence: true, length: {maximum: 50}
   validates :password, presence: true, length: {minimum: 6}, allow_nil: true, on: :create
   has_secure_password

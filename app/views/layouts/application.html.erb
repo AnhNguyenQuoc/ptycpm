@@ -47,7 +47,7 @@
           </div>
 
           <% flash.each do |message_type, message| %>
-                <div class="<%=message_type %>"><strong><%= message_type %></strong><span><%= message %></span></div>
+                <div class="<%=message_type %>" id="flash"><strong><%= message_type %></strong><span><%= message %></span></div>
             <% end %>
     <%= yield %>
     <footer>
@@ -83,7 +83,7 @@
             
             <div class="detail-about" id="map">
                <div>
-                  <script src='https://maps.googleapis.com/maps/api/js?v=3.exp'></script><div style='overflow:hidden;height:250px;width:250px;'><div id='gmap_canvas' style='height:250px;width:250px;'></div><div><small><a href="https://embedgooglemaps.com/en/how-to-embed-google-maps-into-your-website/">embedgooglemaps.com 									embedgooglemaps.com 									embedgooglemaps.com 									embedgooglemaps.com 									embedgooglemaps.com 									embedgooglemaps.com 									embedgooglemaps.com 									embedgooglemaps.com 									embedgooglemaps.com 									embedgooglemaps.com 									embedgooglemaps.com 									embedgooglemaps.com 									embedgooglemaps.com 									embedgooglemaps.com 									embedgooglemaps.com 									embedgooglemaps.com 									embedgooglemaps.com 									embedgooglemaps.com 																		embedgooglemaps.com</a></small></div><div><small><a href="http://buyinstagramfollowersreviews.net/">Visit BIFR.COM/</a></small></div><style>#gmap_canvas img{max-width:none!important;background:none!important}</style></div><script type='text/javascript'>function init_map(){var myOptions = {zoom:16,center:new google.maps.LatLng(10.034499800000406,105.7733476407532),mapTypeId: google.maps.MapTypeId.ROADMAP};map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(10.034499800000406,105.7733476407532)});infowindow = new google.maps.InfoWindow({content:'<strong>ChanRau</strong><br>h8 cao thắng, Mậu Thân Xuân Khánh Ninh Kiều<br>'});google.maps.event.addListener(marker, 'click', function(){infowindow.open(map,marker);});infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);</script>
+                  <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDBsOFaxrzhBjLNw20cvOEMj63_Bgrwdt4&callback=initMap'></script><div style='overflow:hidden;height:250px;width:250px;'><div id='gmap_canvas' style='height:250px;width:250px;'></div><div><small><a href="https://embedgooglemaps.com/en/how-to-embed-google-maps-into-your-website/">embedgooglemaps.com 									embedgooglemaps.com 									embedgooglemaps.com 									embedgooglemaps.com 									embedgooglemaps.com 									embedgooglemaps.com 									embedgooglemaps.com 									embedgooglemaps.com 									embedgooglemaps.com 									embedgooglemaps.com 									embedgooglemaps.com 									embedgooglemaps.com 									embedgooglemaps.com 									embedgooglemaps.com 									embedgooglemaps.com 									embedgooglemaps.com 									embedgooglemaps.com 									embedgooglemaps.com 																		embedgooglemaps.com</a></small></div><div><small><a href="http://buyinstagramfollowersreviews.net/">Visit BIFR.COM/</a></small></div><style>#gmap_canvas img{max-width:none!important;background:none!important}</style></div><script type='text/javascript'>function init_map(){var myOptions = {zoom:16,center:new google.maps.LatLng(10.034499800000406,105.7733476407532),mapTypeId: google.maps.MapTypeId.ROADMAP};map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(10.034499800000406,105.7733476407532)});infowindow = new google.maps.InfoWindow({content:'<strong>ChanRau</strong><br>h8 cao thắng, Mậu Thân Xuân Khánh Ninh Kiều<br>'});google.maps.event.addListener(marker, 'click', function(){infowindow.open(map,marker);});infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);</script>
                </div>
               </div>
         </div>
@@ -105,5 +105,12 @@
 
 </div>
     </footer>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        setTimeout(function(){
+          $('#flash').hide('blind');
+        }, 2000);
+       })
+      </script>
   </body>
 </html>

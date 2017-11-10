@@ -3,21 +3,27 @@
       <p>SIGN UP <i class="fa fa-user-plus" aria-hidden="true"></i></p>
   </div>
   <%= form_for @user do |f| %>
-  <%= render 'shared/error_messages' %>
   <div class="info_signin">
       <p><i class="fa fa-user-circle-o" aria-hidden="true"></i> <%= f.label :name %></p>
       <%= f.text_field :name, placeholder: "Name of you" %>
+      <p class='error'><%= show_errors(@user, :name) %></p>
       <p><i class="fa fa-envelope" aria-hidden="true"></i> <%= f.label :email %></p>
       <%= f.text_field :email, placeholder: "Email of you" %>
+      <p class='error'><%= show_errors(@user, :email) %></p>
       <p><i class="fa fa-lock" aria-hidden="true"></i> <%= f.label :password %></p>
       <%= f.password_field :password %>
+      <p class='error'><%= show_errors(@user, :password) %></p>
        <p><i class="fa fa-lock" aria-hidden="true"></i> <%= f.label :password_confirmation, "Confirmation" %></p>
        <%= f.password_field :password_confirmation %>
+       <p class='error'><%= show_errors(@user, :password_confirmation) %></p>
        <p><i class="fa fa-phone-square" aria-hidden="true"></i> <%= f.label :phone %></p>
-       <%= f.telephone_field_tag :phone, placeholder: "Phone of you" %>
+       <%= f.telephone_field :phone, placeholder: "Phone of you" %>
+       <p class='error'><%= show_errors(@user, :phone) %></p>
 
        <p><i class="fa fa-map-marker" aria-hidden="true"></i> <%= f.label :address %></p>
+       
        <%= f.text_field :address, placeholder: "Address of you" %>
+       <p class='error'><%= show_errors(@user, :address) %></p>
       <%= f.submit "Create my account", {:style => 'background:tomato;margin-top:15px;border:none;color:white;background:tomato;padding:10px 20px;'} %>
       <% end %>
   </div>

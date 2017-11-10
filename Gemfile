@@ -35,6 +35,7 @@ gem 'bootstrap-sass', '~> 3.3.7'
 gem 'jquery-rails'
 # Use Capistrano for deployment
 gem 'activeadmin'
+gem 'active_admin_editor', github: 'boontdustie/active_admin_editor'
 gem 'will_paginate'
 gem 'phony_rails'
 gem 'chartkick'
