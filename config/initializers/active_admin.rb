@@ -12,7 +12,8 @@ ActiveAdmin.setup do |config|
   config.register_javascript 'https://www.google.com/jsapi'
   config.footer = "ChanRau company©"
   config.authorization_adapter = ActiveAdmin::CanCanAdapter
-  config.cancan_ability_class = AdminAbility
+  config.cancan_ability_class = Ability
+
   
   
   # Set an optional image to be displayed for the header
@@ -58,7 +59,7 @@ ActiveAdmin.setup do |config|
   #
   # This setting changes the method which Active Admin calls
   # within the application controller.
-  # config.authentication_method = :authenticate_admin_user!
+
 
   # == User Authorization
   #

@@ -5,9 +5,9 @@ class Ability
     user ||= User.new # guest user (not logged in)
     if user.role == true
       can :manage, :all # if user is admin, can access any action in all controller
-      can :manage, ActiveAdmin::Page, name: "Dashboard"
+      can :manage, ActiveAdmin::Page, name: "Dashboard", namespace_name: :admin
     else
-      can [:create, :update], User
+      can :manage, User
       can [:create], Order
     end
 

@@ -3,10 +3,11 @@ class UsersController < ApplicationController
   before_action :check_user, only: [:edit, :update]
   before_action :correct_user, only: [:edit, :update]
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to root_path, :alert => "You don't have permission"
+    redirect_to root_path
   end
   def show
     @user = User.find(params[:id])
+    @order = Order.find_by(user_id: @user)
   end
 
   def new

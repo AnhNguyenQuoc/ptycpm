@@ -5,5 +5,9 @@
 <% end %>
 <p id="infor3">Total :</p>
 <p id="cost2" style="height: 100%; margin-bottom: -45px;"><%= @cart.total_price %></p>
+<% if @cart.line_items.count > 0 %>
 <%= button_to "CARRY OUT PAYMENT", new_order_path, :style => "border:none;padding:20px;background:tomato;color:white;", method: :get %><br>
 <%= link_to "Empty cart", cart_path(@current_cart),method: :delete, data: {confirm: "Are you sure?"}, :style => 'margin-left: -120px' %>
+<% else %>
+<%= button_to "Let's Buy Products", shop_path, method: :get, :style => "border:none;padding:20px;background:tomato;color:white;" %>
+<% end %>

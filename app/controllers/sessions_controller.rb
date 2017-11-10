@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   before_action :check_login, only: [:new, :create]
+  skip_authorization_check
   def new
   end
 
@@ -14,7 +15,7 @@ class SessionsController < ApplicationController
         flash[:success] = "Welcome to ChanRau"
         current_cart.user = current_user
         current_cart.save
-        redirect_to root_path
+        redirect_back fallback_location: root_path
       end
     else
       flash.now[:danger] = "Invalid email/password combination"

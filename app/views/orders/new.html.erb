@@ -9,7 +9,9 @@
         <div id="content_order1" >
             <div class="delivery">
                 <p id="p_left"><strong>Delivery address of the customer</strong></p>
+                <% if !logged_in? %>
                 <%= link_to "Login to order", login_path, style: "color:blue;font-size:80%;" %>
+                <% end %>
             </div>
             <div class="address">
                 <% if !logged_in? %>
@@ -26,19 +28,21 @@
                   </p>
                   <p>
                     <%= f.label :address %><br>
-                    <%= f.text_area :address %>
+                    <%= f.text_area :address %><br>
                     <p class='error'><%= show_errors(@order, :address) %></p>
                   </p>
                   <p>
                       <%= f.label :phone %><br>
                       <%= f.telephone_field :phone %>
-                      <p class='error'><%= show_errors(@order, :phone) %></p>
+                      
                   </p>
+                  <p class='error'><%= show_errors(@order, :phone) %></p>
                   <p>
                       <%= f.label :pay_type %><br>
                       <%= f.select :pay_type, Order.pay_types.keys, prompt: "select a payment method" %>
-                      <p class='error'><%= show_errors(@order, :pay_type) %></p>
+                      
                   </p>
+                  <p class='error'><%= show_errors(@order, :pay_type) %></p>
                   <p>
                     <%= f.submit %>
                   </p>

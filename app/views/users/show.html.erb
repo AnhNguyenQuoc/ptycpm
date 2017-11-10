@@ -1,2 +1,5 @@
 <%= @user.name %>, <%= @user.email %>
 <%= link_to "Edit" , edit_user_path(@user) %>
+<ul>
+    <%= link_to "Your order", orders_path(@user) %>
+</ul>

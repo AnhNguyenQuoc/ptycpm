@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
 
   def index
-    @orders = Order.all
+    @orders = Order.find_by(user_id: current_user.id)
   end
 
   def show
@@ -14,24 +14,25 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @cart = @current_cart
+    
     @order = Order.new(order_params)
     @order.add_line_item_from_cart(@current_cart)
-    if @order.save
-        if logged_in?
-          Cart.destroy(@current_cart.id)
-          @order.update_attribute(:total, @order.total_price)
+    @cart = @current_cart
+      if @order.save
+          if logged_in?
+            Cart.destroy(@current_cart.id)
+            @order.update_attribute(:total, @order.total_price)
+          else
+            Cart.destroy(session[:cart_id])
+            session[:cart_id] = nil
+            @order.update_attribute(:total, @order.total_price)
+          end
+          flash[:success] = "Your order is done"
+          redirect_to root_path
         else
-          Cart.destroy(session[:cart_id])
-          session[:cart_id] = nil
-          @order.update_attribute(:total, @order.total_price)
-         end
-         flash[:success] = "Your order is done"
-         redirect_to root_path
-    else
-      flash.now[:danger] = "Let try again!!"
-      render 'new'
-    end
+          flash[:danger] = "Let's try again"
+          render 'new'
+      end
   end
 
   private
