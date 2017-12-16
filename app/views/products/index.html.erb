@@ -16,7 +16,7 @@
                             <li><%= link_to "Podded vegetables", products_path(:catalog => 'Podded vegetables'), remote: true %></li>
                             <li><%= link_to "Bulb and stem vegetables", products_path(:catalog => 'Bulb and stem vegetables'), remote: true %></li>
                             <li><%= link_to "Root and tuberous vegetables", products_path(:catalog => 'Root and tuberous vegetables'), remote: true %></li>
-                            <li><%= link_to "Sea vegetables", products_path(:catalog => 'Sea vegetables'), remote: true %></li>
+                            <li><%= link_to "Sea vagetables", products_path(:catalog => 'Sea vagetables'), remote: true %></li>
                        </ul>
                 </div>
                <div id="bestseller">
@@ -24,11 +24,9 @@
                        <p>BESTSELLER</p>
                    </div>
                    <ul id="choose">
-                       <li><a href="">1</a></li>
-                       <li><a href="">2</a></li>
-                       <li><a href="">3</a></li>
-                       <li><a href="">4</a></li>
-                       <li><a href="">5</a></li>
+                       <% @product.each do |product| %>
+                       <li><%= link_to product.name, product_path(product) %></li>
+                       <% end %>
                    </ul>
                </div>
            </div>

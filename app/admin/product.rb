@@ -16,10 +16,10 @@ ActiveAdmin.register Product do
     config.per_page = 20
      batch_action :destroy do |ids|
         batch_action_collection.find(ids).each do |product|
-          product.destroy
+          product.delete
         end
-        redirect_to admin_products_path, alert: "Delete user complete"
-    end
+          redirect_to admin_products_path, alert: "Delete products complete"
+        end
     index do
         selectable_column
         column :name

@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   attr_accessor :remember_token
-  has_one :cart
-  has_many :orders
+  has_one :cart, dependent: :destroy
+  has_many :orders, dependent: :destroy
   before_save {self.email = email.downcase}
 
   scope :admin, -> {where(role: true)}

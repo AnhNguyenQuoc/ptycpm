@@ -974,7 +974,7 @@ body {
   }
   .header_blog{
     display: grid;
-    background:url("../img/header_blog.png");
+    background:url(image_path("header_blog.png"));
   }
   .header_blog p{
   letter-spacing: 8px;

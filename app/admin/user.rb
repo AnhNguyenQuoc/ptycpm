@@ -19,6 +19,13 @@ ActiveAdmin.register User do
         end
         redirect_to admin_users_path, alert: "User change admin complete"
     end
+    batch_action :destroy do |ids|
+        batch_action_collection.find(ids).each do |user|
+          user.delete
+          redirect_to admin_users_path, alert: "Delete user complete"
+        end
+        
+    end
 
 
     index do

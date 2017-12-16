@@ -32,8 +32,8 @@
               <div class="menu">
                   <ul>
                       <li><%= link_to "Home", root_path %></li>
-                      <li><a href="blog.php">blog</a></li>
-                      <li  id="li_hover"><%= link_to "shop", shop_path %></li>
+                      <li><%= link_to "Blog", blog_path %></li>
+                      <li  id="li_hover"><%= link_to "shop", shop_path, method: :get %></li>
                       <% if !logged_in? %>
                       <li><%= link_to "sign in", login_path %></li>
                       <li><%= link_to "sign up", signup_path %></li>
@@ -41,7 +41,7 @@
                       <li><%= link_to current_user.name, current_user %></li>
                       <li><%= link_to "logout", logout_path, method: :delete %></li>
                       <% end %>
-                      <li><%= link_to "<i class='fa fa-shopping-cart'></i>".html_safe, @current_cart %></li>
+                      <li><%= link_to "<i class='fa fa-shopping-cart' style='font-size: 150%'></i>".html_safe, @current_cart %></li>
                   </ul>
               </div>
           </div>

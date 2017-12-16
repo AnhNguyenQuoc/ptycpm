@@ -1,6 +1,6 @@
 class Product < ApplicationRecord
 
-has_many :line_items
+has_many :line_items, dependent: :destroy
 before_destroy :ensure_not_referenced_by_any_line_item
 
 
@@ -22,7 +22,7 @@ validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 validates :name, presence: true, length: {minimum: 4}
 validates :price, presence: true, numericality: {only_integer: false, greater_than_or_equal_to: 0}
 validates :discount, presence: true, numericality: {only_integer: true, greater_than_or_equal_to: 0}
-validates :description, presence: true, length: {maximum: 50}
+validates :description, presence: true, length: {maximum: 250}
 validates :total, presence: true, numericality: {only_integer: true, greater_than_or_equal_to: 0}
 validates :catalog, presence: true, inclusion: {in: catalogs.keys}
 validates :source, presence: true

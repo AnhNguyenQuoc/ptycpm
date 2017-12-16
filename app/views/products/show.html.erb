@@ -19,11 +19,15 @@
                 <% end %>
             </div>
             <div>
+                <% if @product.total != 0 %>
                 <%= link_to "Buy now", line_items_path(product_id: @product.id), :style => "background:tomato;color:white;border:none;padding:20px 50px;margin:20px 0 0 40px;position: absolute;", method: :post %>
+                <% else %>
+                <%= link_to "Out of Stock", :style => "background:tomato;color:white;border:none;padding:20px 50px;margin:20px 0 0 40px;position: absolute;" %>
+                <% end %>
             </div>
         </div>
         <div id="description">  
-            <%= @product.description %>
+            <%= truncate(strip_tags(@product.description), length: 250) %>
         </div>
         
     </div>
