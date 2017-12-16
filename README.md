@@ -1,24 +1,29 @@
-# README
+Welcome to ChanRau
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+ChanRau is a shopping website. It's a project in my university in fourth year student with my team. I do back-end of this project with Ruby on Rails and my friend do front-end with HTML and CSS. 
+It's too basic but it's first project of mine. If any thing wrong please issues it.Thank you!
+Getting Started
+    
+    Change directory to myapp and start the web server:
 
-Things you may want to cover:
+     $ cd ptycpm
 
-* Ruby version
+    Install bundle project need:
 
-* System dependencies
+     $ bundle install
 
-* Configuration
+    Install db for this:
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+     $ rails db:migrate
+     $ rails db:seed
+     
+    And run server:
+     
+     $ rails s
+    To use website you can go to http://localhost:3000 to use it by yourself
+    To use admin panel you can go to http://localhost:3000/admin and login with: 
+        email: admin@gmail.com
+        password: 123456
+        
+        
+    Enjoys it!!
