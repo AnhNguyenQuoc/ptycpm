@@ -12,7 +12,7 @@ Getting Started
 
      $ bundle install
 
-    Install db for this:
+    Install database for this:
 
      $ rails db:migrate
      $ rails db:seed
@@ -20,6 +20,7 @@ Getting Started
     And run server:
      
      $ rails s
+     
     To use website you can go to http://localhost:3000 to use it by yourself
     To use admin panel you can go to http://localhost:3000/admin and login with: 
         email: admin@gmail.com
